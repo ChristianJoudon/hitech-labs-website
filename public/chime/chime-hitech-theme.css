@@ -8,25 +8,10 @@
    greens, terracotta clay, IBM Plex Mono / Space Mono).
    ========================================================================== */
 
+/* The widget's own design tokens are now recolored to the HiTech palette at the
+   source (chime-widget.css), so this theme only sets the warm backdrop + fonts
+   and a few embed-specific tweaks. */
 .chime-widget {
-  /* Green scale — same light→dark ramp the widget expects (so button/label
-     contrast still holds) but retinted to HiTech's sage-forest greens. */
-  --mint-50: #eef2ec;
-  --mint-100: #e3ebe4;
-  --mint-200: #cfe0d4;
-  --mint-300: #a9c6b4;
-  --mint-400: #7cab92;
-  --mint-500: #4e8a6b;
-  --mint-600: #3f7d5f;
-  --mint-700: #3a6b52; /* micro-labels — ~5.6:1 on white */
-  --mint-800: #33403a; /* primary button start — white text ~9:1 */
-  --mint-900: #26332d; /* primary button end */
-
-  --ink: #26332d;
-  --ink-soft: #585f58;
-  --line: rgba(68, 83, 74, 0.16);
-  --warm-white: #f9f6f0;
-
   /* Warm paper backdrop with a faint phosphor-green glow, instead of mint. */
   background:
     radial-gradient(circle at 12% -8%, rgba(47, 133, 90, 0.08), transparent 42%),

@@ -2,10 +2,10 @@ export default function Footer() {
   return (
     <footer className="section-shell border-t border-bordersoft bg-paper py-14">
       <img
-        src={`${import.meta.env.BASE_URL}assets/brand/leaf-philodendron.svg`}
+        src={`${import.meta.env.BASE_URL}assets/Leaf2.png`}
         alt=""
         aria-hidden="true"
-        className="pointer-events-none absolute -bottom-16 -right-10 hidden w-96 max-w-[30vw] opacity-[0.16] md:block"
+        className="pointer-events-none absolute -bottom-16 -right-10 hidden w-96 max-w-[30vw] opacity-[0.36] md:block"
       />
 
       <div className="container-shell relative">
