@@ -1,0 +1,565 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==================================================
+   HiTech Labs — design tokens
+   Warm cream paper, deep sage-forest greens, and a
+   single earthy terracotta accent used sparingly.
+================================================== */
+
+:root {
+  --paper: #f6f2ec;
+  --card: #f9f6f0;
+  --mist: #efeae1;
+  --linen: #e8e1d6;
+  --fern-watermark: #d8d1cb;
+  --border-soft: #e5ded2;
+  --sage-muted: #6e7269;
+  --ink-green: #44534a;
+  --ink-green-deep: #33403a;
+  --forest: #2a3832;
+  --body-text: #585f58;
+  --clay: #b56a4c;
+  --clay-deep: #a15c41;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--paper);
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background-color: var(--paper);
+  color: var(--body-text);
+  font-family: 'Manrope', Inter, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  background-color: var(--paper);
+}
+
+::selection {
+  background: rgba(181, 106, 76, 0.18);
+  color: var(--ink-green-deep);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+@layer base {
+  body {
+    @apply font-body text-body antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-inkdeep;
+  }
+
+  a,
+  button {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Visible keyboard focus for every interactive element (pills override with their own ring) */
+  a:focus-visible,
+  button:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 2px solid var(--ink-green);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  img {
+    display: block;
+  }
+}
+
+/* Skip-to-content link — visible only on keyboard focus */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  z-index: 100;
+  padding: 0.6rem 1.1rem;
+  border-radius: 999px;
+  background-color: var(--ink-green-deep);
+  color: #f6f2ec;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: top 200ms ease;
+}
+
+.skip-link:focus {
+  top: 1rem;
+  outline: none;
+}
+
+/* --------------------------------------------------
+   GLOBAL SURFACES
+-------------------------------------------------- */
+
+#home,
+#services,
+#advanced,
+#faq,
+#contact,
+footer {
+  background-color: var(--paper);
+}
+
+#home {
+  isolation: isolate;
+}
+
+/* Paper texture — limited to the hero so the rest of the page stays clean */
+#home::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url('/assets/brand/texture-linen-paper-tile.png');
+  background-repeat: repeat;
+  background-size: 760px 760px;
+  opacity: 0.42;
+}
+
+#home::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url('/assets/brand/texture-soft-grain.png');
+  background-repeat: repeat;
+  background-size: 820px 820px;
+  opacity: 0.03;
+  mix-blend-mode: multiply;
+}
+
+@layer components {
+  .site-shell {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--paper);
+  }
+
+  .section-shell {
+    position: relative;
+    overflow: hidden;
+    background-color: transparent;
+  }
+
+  .container-shell {
+    width: 100%;
+    max-width: 74rem;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .container-shell {
+      padding-inline: 2rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container-shell {
+      padding-inline: 2.75rem;
+    }
+  }
+
+  /* --------------------
+     PANELS + CARDS
+  -------------------- */
+
+  .panel-glass {
+    border: 1px solid rgba(229, 222, 210, 0.95);
+    border-radius: 28px;
+    background-color: var(--card);
+    box-shadow: 0 24px 60px rgba(42, 56, 50, 0.06);
+  }
+
+  .service-card {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding: 2.5rem 1.9rem 2.35rem;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid rgba(229, 222, 210, 0.9);
+    border-radius: 26px;
+    background-color: var(--card);
+    box-shadow: 0 14px 40px rgba(42, 56, 50, 0.05);
+    transition:
+      transform 560ms cubic-bezier(0.19, 1, 0.22, 1),
+      box-shadow 560ms cubic-bezier(0.19, 1, 0.22, 1),
+      border-color 420ms ease;
+    will-change: transform;
+  }
+
+  .service-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 46%);
+    opacity: 0.6;
+    transition: opacity 360ms ease;
+  }
+
+  .service-card:hover {
+    transform: translateY(-9px);
+    border-color: rgba(68, 83, 74, 0.2);
+    box-shadow: 0 30px 70px rgba(42, 56, 50, 0.11);
+  }
+
+  .service-card:focus-visible {
+    transform: translateY(-9px);
+    border-color: rgba(68, 83, 74, 0.25);
+    box-shadow: 0 0 0 3px rgba(68, 83, 74, 0.28), 0 30px 70px rgba(42, 56, 50, 0.11);
+    outline: none;
+  }
+
+  .service-card:hover::after,
+  .service-card:focus-visible::after {
+    opacity: 1;
+  }
+
+  .service-card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    margin: 0 auto 0.35rem;
+    color: var(--clay);
+    transition: transform 460ms cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  .service-card-icon svg {
+    width: 2rem;
+    height: 2rem;
+    stroke-width: 1.5;
+  }
+
+  .service-card-title {
+    margin-top: 1rem;
+    margin-inline: auto;
+    max-width: 15ch;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(1.7rem, 1.9vw, 2.15rem);
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    font-weight: 600;
+    color: var(--ink-green);
+    text-wrap: balance;
+    transition: color 320ms ease;
+  }
+
+  .service-card-copy {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    line-height: 1.55;
+    color: var(--body-text);
+  }
+
+  .service-card-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 1.25rem;
+    font-family: 'IBM Plex Mono', 'SFMono-Regular', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--clay-deep);
+    opacity: 0;
+    transform: translateY(4px);
+    transition:
+      opacity 380ms ease,
+      transform 380ms cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  .service-card:hover .service-card-more,
+  .service-card:focus-visible .service-card-more {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .service-card:hover .service-card-icon,
+  .service-card:focus-visible .service-card-icon {
+    transform: translateY(-3px) scale(1.06);
+  }
+
+  @media (min-width: 768px) {
+    .service-card {
+      padding: 2.35rem 2.1rem 2.2rem;
+    }
+  }
+
+  /* --------------------
+     BUTTONS
+  -------------------- */
+
+  .btn-pill,
+  .btn-pill-solid,
+  .btn-ghost {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 3.15rem;
+    padding: 0.85rem 1.7rem;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.005em;
+    transition:
+      transform 460ms cubic-bezier(0.19, 1, 0.22, 1),
+      box-shadow 460ms cubic-bezier(0.19, 1, 0.22, 1),
+      border-color 320ms ease,
+      background-color 320ms ease,
+      color 320ms ease;
+    overflow: hidden;
+  }
+
+  /* Solid green — the primary action, matches the monogram */
+  .btn-pill-solid {
+    border: 1px solid var(--ink-green-deep);
+    background-color: var(--ink-green-deep);
+    color: #f6f2ec;
+    box-shadow: 0 14px 30px rgba(42, 56, 50, 0.16);
+  }
+
+  .btn-pill-solid:hover {
+    transform: translateY(-2px);
+    background-color: var(--forest);
+    border-color: var(--forest);
+    box-shadow: 0 20px 42px rgba(42, 56, 50, 0.22);
+  }
+
+  /* Outline — secondary action on paper */
+  .btn-pill {
+    border: 1px solid rgba(68, 83, 74, 0.28);
+    background-color: transparent;
+    color: var(--ink-green-deep);
+  }
+
+  .btn-pill:hover {
+    transform: translateY(-2px);
+    border-color: rgba(68, 83, 74, 0.55);
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 14px 30px rgba(42, 56, 50, 0.08);
+  }
+
+  /* Ghost text link with animated underline */
+  .btn-ghost {
+    padding: 0.85rem 0.4rem;
+    color: var(--ink-green-deep);
+    min-height: auto;
+  }
+
+  .btn-ghost::after {
+    content: '';
+    position: absolute;
+    left: 0.4rem;
+    right: 0.4rem;
+    bottom: 0.55rem;
+    height: 1px;
+    background-color: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 420ms cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  .btn-ghost:hover::after {
+    transform: scaleX(1);
+  }
+
+  .btn-pill:active,
+  .btn-pill-solid:active {
+    transform: translateY(0);
+  }
+
+  .btn-pill:focus-visible,
+  .btn-pill-solid:focus-visible,
+  .btn-ghost:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(68, 83, 74, 0.16), 0 14px 32px rgba(42, 56, 50, 0.08);
+  }
+
+  /* --------------------
+     TYPOGRAPHY
+  -------------------- */
+
+  .display-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(3.2rem, 7.2vw, 6.1rem);
+    line-height: 0.94;
+    letter-spacing: -0.045em;
+    font-weight: 600;
+    color: var(--ink-green-deep);
+  }
+
+  .sub-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(2.6rem, 4.8vw, 4rem);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    font-weight: 600;
+    color: var(--ink-green-deep);
+  }
+
+  .service-modal-title,
+  .accordion-title,
+  .faq-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    font-weight: 600;
+    color: var(--ink-green-deep);
+    text-wrap: balance;
+  }
+
+  .body-copy {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--body-text);
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: 'IBM Plex Mono', 'SFMono-Regular', monospace;
+    font-size: 0.76rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    color: var(--clay-deep);
+  }
+
+  .eyebrow-line::before {
+    content: '';
+    display: inline-block;
+    width: 1.75rem;
+    height: 1px;
+    background-color: currentColor;
+    opacity: 0.55;
+  }
+
+  .mono-detail {
+    font-family: 'IBM Plex Mono', 'SFMono-Regular', monospace;
+    letter-spacing: 0.01em;
+  }
+
+  /* --------------------
+     TRUST BAND
+  -------------------- */
+
+  .trust-band {
+    border-top: 1px solid rgba(229, 222, 210, 0.9);
+    border-bottom: 1px solid rgba(229, 222, 210, 0.9);
+    background-color: rgba(252, 250, 246, 0.6);
+  }
+
+  .trust-item {
+    font-family: 'IBM Plex Mono', 'SFMono-Regular', monospace;
+    font-size: 0.76rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-green);
+  }
+
+  .trust-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 999px;
+    background-color: var(--clay);
+    opacity: 0.7;
+  }
+
+  /* --------------------
+     FORMS / DIVIDERS
+  -------------------- */
+
+  .field-shell {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.95rem 1.05rem;
+    border: 1px solid rgba(229, 222, 210, 0.95);
+    border-radius: 16px;
+    background-color: var(--card);
+    transition:
+      transform 320ms ease,
+      border-color 280ms ease,
+      box-shadow 280ms ease;
+  }
+
+  .field-shell:focus-within {
+    border-color: rgba(68, 83, 74, 0.4);
+    box-shadow: 0 12px 26px rgba(42, 56, 50, 0.07);
+  }
+
+  .section-divider {
+    height: 1px;
+    width: 100%;
+    background-color: rgba(229, 222, 210, 0.9);
+  }
+
+  /* Subtle shared hover for accordion/FAQ panels, matching the card easing */
+  .panel-hover {
+    transition:
+      transform 460ms cubic-bezier(0.19, 1, 0.22, 1),
+      border-color 320ms ease,
+      box-shadow 460ms cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  .panel-hover:hover {
+    transform: translateY(-2px);
+    border-color: rgba(68, 83, 74, 0.16);
+    box-shadow: 0 20px 48px rgba(42, 56, 50, 0.08);
+  }
+}
+
+/* Slow, gentle float for the hero fern */
+@keyframes fern-drift {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(-1.1deg);
+  }
+}
+
+.fern-float {
+  animation: fern-drift 13s ease-in-out infinite;
+}

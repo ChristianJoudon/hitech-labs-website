@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="110" fill="#F6F2EC"/>
+  <g fill="#2A3832" color="#2A3832">
+    <text x="112" y="328" font-family="Cormorant Garamond, Georgia, serif" font-size="220" font-weight="600" letter-spacing="-10">HL</text>
+    <g transform="translate(298 112) scale(0.72)">
+      <path d="M 0 158 Q 70 88 152 38" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round" opacity="0.95"/>
+      <ellipse cx="48" cy="132" rx="48" ry="10" transform="rotate(-25 48 132)" fill="currentColor"/>
+      <ellipse cx="64" cy="106" rx="56" ry="10" transform="rotate(-12 64 106)" fill="currentColor"/>
+      <ellipse cx="92" cy="84" rx="60" ry="10" transform="rotate(2 92 84)" fill="currentColor"/>
+      <ellipse cx="126" cy="66" rx="64" ry="10" transform="rotate(14 126 66)" fill="currentColor"/>
+      <ellipse cx="154" cy="50" rx="64" ry="10" transform="rotate(24 154 50)" fill="currentColor"/>
+    </g>
+  </g>
+</svg>
