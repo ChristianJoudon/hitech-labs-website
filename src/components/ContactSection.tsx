@@ -40,7 +40,7 @@ export default function ContactSection() {
     >
       <div className="container-shell">
         <div className="mx-auto max-w-2xl text-center">
-          <span className="eyebrow eyebrow-line">Let’s talk</span>
+          <span className="eyebrow">Let’s talk</span>
           <h2 className="sub-title mt-5">Contact</h2>
           <p className="body-copy mt-4">
             Tell me what is feeling messy, slow, or overdue. We’ll figure out

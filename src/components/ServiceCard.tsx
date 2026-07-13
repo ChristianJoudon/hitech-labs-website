@@ -36,8 +36,10 @@ export default function ServiceCard({
         <p className="service-card-copy">{service.tagline}</p>
 
         <span className="service-card-more">
-          View details
-          <span aria-hidden="true">→</span>
+          view details
+          <span className="cursor" aria-hidden="true">
+            _
+          </span>
         </span>
       </motion.button>
 

@@ -15,10 +15,10 @@ const SECTION_IDS = ['home', 'services', 'advanced', 'faq', 'contact']
 function BrandLockup() {
   return (
     <a href="#home" className="group inline-flex flex-col leading-none">
-      <span className="font-heading text-[2.15rem] leading-none tracking-[-0.045em] text-inkdeep md:text-[2.45rem]">
-        HiTech <span className="font-normal text-ink/85">Labs</span>
+      <span className="font-wordmark text-[1.4rem] leading-none tracking-[-0.02em] text-inkdeep md:text-[1.6rem]">
+        HiTech Labs
       </span>
-      <span className="mono-detail mt-1.5 text-[0.62rem] uppercase tracking-[0.28em] text-sage md:text-[0.66rem]">
+      <span className="mono-detail mt-1.5 whitespace-nowrap text-[0.58rem] uppercase tracking-[0.14em] text-sage md:text-[0.62rem]">
         Small Business Systems &amp; Support
       </span>
     </a>
@@ -47,15 +47,15 @@ export default function NavBar() {
           >
             <BrandLockup />
 
-            <div className="hidden items-center gap-8 md:flex">
-              <ul className="flex items-center gap-7 text-[0.92rem] font-medium">
+            <div className="hidden items-center gap-5 md:flex">
+              <ul className="flex items-center gap-5 text-[0.8rem] font-medium">
                 {navItems.map((item) => {
                   const isActive = active === item.id
                   return (
                     <li key={item.href}>
                       <a
                         href={item.href}
-                        className={`relative py-1 transition-colors duration-300 ${
+                        className={`relative whitespace-nowrap py-1 transition-colors duration-300 ${
                           isActive
                             ? 'text-inkdeep'
                             : 'text-body hover:text-inkdeep'
@@ -73,7 +73,10 @@ export default function NavBar() {
                 })}
               </ul>
 
-              <a href="#contact" className="btn-pill px-5 py-2.5">
+              <a
+                href="#contact"
+                className="btn-pill whitespace-nowrap px-4 py-2.5 text-[0.82rem]"
+              >
                 Free Consult
               </a>
             </div>

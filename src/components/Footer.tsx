@@ -18,8 +18,8 @@ export default function Footer() {
         <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <div>
             <a href="#home" className="inline-flex flex-col leading-none">
-              <span className="font-heading text-[2.3rem] leading-none tracking-[-0.045em] text-inkdeep">
-                HiTech <span className="font-normal text-ink/85">Labs</span>
+              <span className="font-wordmark text-[1.55rem] leading-none tracking-[-0.02em] text-inkdeep">
+                HiTech Labs
               </span>
               <span className="mono-detail mt-2 text-[0.66rem] uppercase tracking-[0.26em] text-sage">
                 Small Business Systems &amp; Support

@@ -7,7 +7,7 @@ describe('<App />', () => {
 
     expect(
       screen.getByRole('heading', {
-        name: /Small-business tech, beautifully handled/i,
+        name: /Small-business tech\./i,
         level: 1
       })
     ).toBeInTheDocument()

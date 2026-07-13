@@ -32,19 +32,13 @@ export default function Hero() {
           transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
           className="max-w-3xl"
         >
-          <span className="eyebrow eyebrow-line">
-            Princeville, Kauaʻi · On-island IT
-          </span>
+          <span className="eyebrow">Princeville, Kauaʻi · On-island IT</span>
 
-          <h1 className="display-title mt-6">
-            Small-business tech,
-            <br />
-            beautifully handled.
-          </h1>
+          <h1 className="display-title mt-6">Small-business tech.</h1>
 
           <p className="mt-7 max-w-xl text-lg leading-8 text-body md:text-[1.32rem] md:leading-9">
-            Local support. Clear systems. Tech that feels effortless — so you
-            can get back to running your business.
+            Local support. Clear systems. Tech that feels effortless, so you can
+            get back to running your business.
           </p>
 
           <div className="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
@@ -60,7 +54,11 @@ export default function Hero() {
           </div>
 
           <p className="mono-detail mt-8 text-[0.72rem] uppercase tracking-[0.18em] text-sage">
-            Free 30-minute tech check · No pressure · No obligation
+            <span className="font-semibold text-terminal">&gt;</span> Free
+            30-minute tech check · No pressure · No obligation
+            <span className="cursor ml-0.5" aria-hidden="true">
+              _
+            </span>
           </p>
         </motion.div>
       </div>

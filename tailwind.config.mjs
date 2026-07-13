@@ -22,11 +22,17 @@ export default {
         body: '#585F58',
         // Earthy terracotta — replaces the old dusty coral, used sparingly
         clay: '#B56A4C',
-        claydeep: '#A15C41'
+        claydeep: '#A15C41',
+        // Phosphor-terminal green — hacker-chic accent for prompts/cursor
+        terminal: '#2F855A',
+        terminaldeep: '#256B48'
       },
       fontFamily: {
-        heading: ['"Cormorant Garamond"', 'Georgia', 'serif'],
-        body: ['Manrope', 'Inter', 'Arial', 'sans-serif'],
+        // Bold geometric sans for the "HiTech Labs" wordmark/logo
+        wordmark: ['"Archivo Black"', 'system-ui', 'sans-serif'],
+        // Monospace display + body — the terminal direction
+        heading: ['"Space Mono"', '"IBM Plex Mono"', 'monospace'],
+        body: ['"IBM Plex Mono"', '"SFMono-Regular"', 'monospace'],
         mono: ['"IBM Plex Mono"', '"SFMono-Regular"', 'monospace']
       },
       boxShadow: {

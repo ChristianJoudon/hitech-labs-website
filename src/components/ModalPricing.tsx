@@ -10,58 +10,63 @@ const data: Section[] = [
     title: 'Core Packages',
     rows: [
       {
-        name: 'Connectivity & IT Support',
-        onetime: '$850–1.3k',
-        monthly: '$250',
-        third: 'Starlink $120/mo • Router $300'
+        name: 'Website & SEO Tune-Up',
+        onetime: '$855-1.27k',
+        monthly: '$225',
+        third: 'Domain $15/yr • Hosting $10-30/mo'
       },
       {
         name: 'Workflow Automation',
-        onetime: '$680–1.02k',
+        onetime: '$680-1.02k',
         monthly: '$200',
         third: 'Zapier $20+/mo'
       },
       {
-        name: 'Website & SEO Tune-Up',
-        onetime: '$855–1.27k',
-        monthly: '$225',
-        third: 'Domain $15/yr • Hosting $10–30/mo'
+        name: 'AI & Smart Tools',
+        onetime: '$650-1.1k',
+        monthly: '$180',
+        third: 'AI usage $0-40/mo'
       },
       {
         name: 'Online Booking Setup',
-        onetime: '$935–1.45k',
+        onetime: '$935-1.45k',
         monthly: '$240',
         third: 'FareHarbor 6% • Stripe 2.9% + 30¢'
       },
       {
-        name: 'Digital Engagement',
-        onetime: '$680–1.02k',
+        name: 'Digital Marketing',
+        onetime: '$680-1.02k',
         monthly: '$210',
-        third: 'Mailchimp $0–13/mo'
+        third: 'Mailchimp $0-13/mo'
       },
       {
-        name: 'POS & Inventory',
-        onetime: '$1.11–1.62k',
-        monthly: '$260',
-        third: 'Square reader $49 • QBO $35+/mo'
+        name: 'Tech Tune-Up',
+        onetime: '$300-600',
+        monthly: 'n/a',
+        third: 'Health check + roadmap'
       }
     ]
   },
   {
     title: 'Add-Ons',
     rows: [
-      { name: 'Tech Health Check', onetime: '$300', monthly: '—', third: '—' },
+      {
+        name: 'Tech Health Check',
+        onetime: '$300',
+        monthly: 'n/a',
+        third: 'n/a'
+      },
       {
         name: '2-hr Staff Workshop',
         onetime: '$180',
-        monthly: '—',
-        third: '—'
+        monthly: 'n/a',
+        third: 'n/a'
       },
       {
         name: 'Seasonal Tune-Up',
-        onetime: '$425–765',
-        monthly: '—',
-        third: '—'
+        onetime: '$425-765',
+        monthly: 'n/a',
+        third: 'n/a'
       }
     ]
   }
@@ -103,7 +108,7 @@ export default function ModalPricing({
               <Dialog.Panel className="panel-glass w-full max-w-5xl overflow-hidden p-6 md:p-8">
                 <div className="mb-6 flex items-start justify-between gap-4">
                   <div>
-                    <Dialog.Title className="font-heading text-[2.8rem] leading-none tracking-[-0.04em] text-inkdeep md:text-[3.2rem]">
+                    <Dialog.Title className="font-heading text-[1.7rem] leading-tight tracking-[-0.04em] text-inkdeep md:text-[2.1rem]">
                       Transparent Pricing
                     </Dialog.Title>
                     <p className="mt-2 text-sm text-body md:text-base">
@@ -127,7 +132,7 @@ export default function ModalPricing({
                     className="max-h-[70vh] overflow-auto"
                     tabIndex={0}
                     role="region"
-                    aria-label="Pricing table — scroll to see all columns"
+                    aria-label="Pricing table: scroll to see all columns"
                   >
                     <table className="w-full min-w-[760px] text-left text-sm text-body">
                       <thead className="sticky top-0 bg-paper/95 backdrop-blur-sm">

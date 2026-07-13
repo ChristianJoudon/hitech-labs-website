@@ -31,7 +31,7 @@ const solutions: Solution[] = [
     overview:
       'We centralize sales, bookings, and marketing data, then surface trends you can act on before high season hits.',
     tech: 'BigQuery, dbt, Looker Studio',
-    price: 'Starter $2.4k–3.2k • 3–4 weeks',
+    price: 'Starter $2.4k-3.2k • 3-4 weeks',
     icon: <ChartBarIcon />
   },
   {
@@ -45,7 +45,7 @@ const solutions: Solution[] = [
     overview:
       'We apply AI where it actually helps: lighter models, clear outputs, and dashboards your team will really use.',
     tech: 'OpenAI API, Vertex AI, TensorFlow Lite',
-    price: 'Pilot $3k–4.5k • 4–6 weeks',
+    price: 'Pilot $3k-4.5k • 4-6 weeks',
     icon: <CpuChipIcon />
   },
   {
@@ -59,7 +59,7 @@ const solutions: Solution[] = [
     overview:
       'We prototype in a sandbox, then roll out in phases so adoption sticks and downtime stays near zero.',
     tech: 'HubSpot, Odoo Cloud, Zapier',
-    price: 'Starter $2k–3k • 3 weeks',
+    price: 'Starter $2k-3k • 3 weeks',
     icon: <SquaresPlusIcon />
   },
   {
@@ -73,7 +73,7 @@ const solutions: Solution[] = [
     overview:
       'Typical jobs connect POS to accounting or booking to CRM, with careful rollbacks and safeguards built in.',
     tech: 'Node.js, Supabase Edge, Make',
-    price: 'Starter $1.6k–2.5k • 2–3 weeks',
+    price: 'Starter $1.6k-2.5k • 2-3 weeks',
     icon: <ArrowsRightLeftIcon />
   },
   {
@@ -87,7 +87,7 @@ const solutions: Solution[] = [
     overview:
       'From first whiteboard to clickable MVP in days, then refine the workflow with your team in real time.',
     tech: 'Bubble, Retool, Supabase',
-    price: 'Starter $2.2k–3k • 3–4 weeks',
+    price: 'Starter $2.2k-3k • 3-4 weeks',
     icon: <PuzzlePieceIcon />
   }
 ]
@@ -103,7 +103,7 @@ export default function AdvancedAccordion() {
     >
       <div className="container-shell">
         <div className="mx-auto max-w-2xl text-center">
-          <span className="eyebrow eyebrow-line">Going further</span>
+          <span className="eyebrow">Going further</span>
           <h2 className="sub-title mt-5">Advanced Solutions</h2>
           <p className="body-copy mt-4">
             Higher-leverage systems for businesses that need cleaner data,
