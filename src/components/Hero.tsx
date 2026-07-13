@@ -37,13 +37,13 @@ export default function Hero() {
           <h1 className="display-title mt-6">Small-business tech.</h1>
 
           <p className="mt-7 max-w-xl text-lg leading-8 text-body md:text-[1.32rem] md:leading-9">
-            Local support. Clear systems. Tech that feels effortless, so you can
-            get back to running your business.
+            Local support. Tech that&rsquo;s easy, so you can get back to
+            running your business.
           </p>
 
           <div className="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
             <a
-              href="#contact"
+              href="#book"
               className="btn-pill-solid md:px-7 md:py-3.5 md:text-base"
             >
               Book Your Free 30-min Tech Check

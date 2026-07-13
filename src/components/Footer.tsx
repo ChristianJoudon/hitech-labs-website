@@ -2,16 +2,10 @@ export default function Footer() {
   return (
     <footer className="section-shell border-t border-bordersoft bg-paper py-14">
       <img
-        src={`${import.meta.env.BASE_URL}assets/brand/palm-frond.png`}
+        src={`${import.meta.env.BASE_URL}assets/brand/leaf-philodendron.svg`}
         alt=""
         aria-hidden="true"
-        className="pointer-events-none absolute left-0 top-0 hidden w-[44rem] max-w-[42vw] opacity-90 md:block"
-      />
-      <img
-        src={`${import.meta.env.BASE_URL}assets/brand/palm-frond.png`}
-        alt=""
-        aria-hidden="true"
-        className="pointer-events-none absolute right-0 top-0 hidden w-[44rem] max-w-[42vw] -scale-x-100 opacity-90 md:block"
+        className="pointer-events-none absolute -bottom-16 -right-10 hidden w-96 max-w-[30vw] opacity-[0.16] md:block"
       />
 
       <div className="container-shell relative">
@@ -50,7 +44,7 @@ export default function Footer() {
 
         <div className="section-divider mt-10" />
         <div className="mt-5 text-xs text-body">
-          <p>© 2025 HiTech Labs · Calm systems for busy businesses.</p>
+          <p>© 2025 HiTech Labs</p>
         </div>
       </div>
     </footer>

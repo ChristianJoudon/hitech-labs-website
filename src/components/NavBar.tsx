@@ -6,11 +6,12 @@ const navItems = [
   { name: 'Services', href: '#services', id: 'services' },
   { name: 'Advanced Solutions', href: '#advanced', id: 'advanced' },
   { name: 'FAQ', href: '#faq', id: 'faq' },
+  { name: 'Book', href: '#book', id: 'book' },
   { name: 'Contact', href: '#contact', id: 'contact' }
 ]
 
 // Stable reference so the active-section observer isn't torn down every render
-const SECTION_IDS = ['home', 'services', 'advanced', 'faq', 'contact']
+const SECTION_IDS = ['home', 'services', 'advanced', 'faq', 'book', 'contact']
 
 function BrandLockup() {
   return (
@@ -74,7 +75,7 @@ export default function NavBar() {
               </ul>
 
               <a
-                href="#contact"
+                href="#book"
                 className="btn-pill whitespace-nowrap px-4 py-2.5 text-[0.82rem]"
               >
                 Free Consult
@@ -107,7 +108,7 @@ export default function NavBar() {
               ))}
               <Disclosure.Button
                 as="a"
-                href="#contact"
+                href="#book"
                 className="btn-pill-solid mt-1"
               >
                 Book Your Free 30-min Tech Check

@@ -1,0 +1,114 @@
+/* ==========================================================================
+   HiTech Labs theme for the Chime booking widget.
+   Loaded AFTER chime-widget.css, so these rules win by source order. It only
+   remaps the widget's design tokens (and a few embed-specific tweaks) — it does
+   not touch the widget's layout or behavior. All selectors stay under
+   `.chime-widget`, so nothing here can leak onto the host page.
+   Palette + type sampled from the HiTech Labs site (warm paper, sage-forest
+   greens, terracotta clay, IBM Plex Mono / Space Mono).
+   ========================================================================== */
+
+.chime-widget {
+  /* Green scale — same light→dark ramp the widget expects (so button/label
+     contrast still holds) but retinted to HiTech's sage-forest greens. */
+  --mint-50: #eef2ec;
+  --mint-100: #e3ebe4;
+  --mint-200: #cfe0d4;
+  --mint-300: #a9c6b4;
+  --mint-400: #7cab92;
+  --mint-500: #4e8a6b;
+  --mint-600: #3f7d5f;
+  --mint-700: #3a6b52; /* micro-labels — ~5.6:1 on white */
+  --mint-800: #33403a; /* primary button start — white text ~9:1 */
+  --mint-900: #26332d; /* primary button end */
+
+  --ink: #26332d;
+  --ink-soft: #585f58;
+  --line: rgba(68, 83, 74, 0.16);
+  --warm-white: #f9f6f0;
+
+  /* Warm paper backdrop with a faint phosphor-green glow, instead of mint. */
+  background:
+    radial-gradient(circle at 12% -8%, rgba(47, 133, 90, 0.08), transparent 42%),
+    linear-gradient(180deg, #f7f3ed 0%, #faf7f1 60%, #fbf9f4 100%);
+
+  font-family: 'IBM Plex Mono', 'SFMono-Regular', ui-monospace, 'SF Mono', monospace;
+}
+
+/* Display headings in Space Mono to echo the site's terminal wordmark. */
+.chime-widget h2,
+.chime-widget h3,
+.chime-widget .chime-progress__label {
+  font-family: 'Space Mono', 'IBM Plex Mono', monospace;
+  letter-spacing: -0.02em;
+}
+
+/* The widget renders its own "Appointment Concierge / HiTech Labs" bar. On the
+   site the section already has a heading, and a sticky bar would collide with
+   the fixed HiTech navbar — so hide it and let the flow start at the steps. */
+.chime-widget .chime-header {
+  display: none;
+}
+
+/* Calm the decorative orbs way down; the site aesthetic is restrained. */
+.chime-widget .chime-orb {
+  opacity: 0.07;
+}
+.chime-widget .chime-orb--one,
+.chime-widget .chime-orb--two,
+.chime-widget .chime-orb--three {
+  background: rgba(47, 133, 90, 0.5);
+}
+
+/* Tighten the widget's page-scale padding for embedded use inside a card. */
+.chime-widget .chime-main {
+  padding: 6px 0 10px;
+}
+.chime-widget .chime-main__inner {
+  padding: 0 6px;
+}
+
+/* Terracotta clay accent, used as sparingly as the host does — the "today" dot
+   and the required-field marker pick it up so it doesn't read as all-green. */
+.chime-widget .calendar-day[data-today='true'] .calendar-day__number::after {
+  background: #b56a4c;
+}
+.chime-widget .chime-field em {
+  color: #b56a4c;
+}
+
+/* ==========================================================================
+   Punch-list refinements
+   ========================================================================== */
+
+/* The per-step heading ("Choose your appointment type") rendered larger than
+   the site's own section titles — bring it in line. */
+.chime-widget h2 {
+  font-size: clamp(1.35rem, 3vw, 1.8rem);
+  line-height: 1.16;
+}
+
+/* Service avatars ("F3", "W&"…): deepen from the mid-mint to the site's
+   sage-forest ink so the widget's greens match the rest of the page, and give
+   them a touch more room from the card's rounded corner so they never look
+   clipped. */
+.chime-widget .service-card {
+  padding: 24px 22px 20px;
+}
+.chime-widget .service-card__icon {
+  background: #44534a;
+  color: #f6f2ec;
+  overflow: hidden;
+}
+
+/* The mint chips (deposit pill, calendar strip, summaries) were a bright, cool
+   mint that clashed with the warm paper palette. Retint to the site's soft
+   terminal-green accent. */
+.chime-widget .service-card__pill,
+.chime-widget .calendar-stat-strip,
+.chime-widget .selection-summary,
+.chime-widget .terms-acceptance[data-unlocked='true'] {
+  background: rgba(47, 133, 90, 0.1);
+  border-color: rgba(47, 133, 90, 0.24);
+  color: #2f6b4a;
+}

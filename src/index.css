@@ -442,8 +442,8 @@ footer {
 
   .sub-title {
     font-family: 'Space Mono', 'IBM Plex Mono', monospace;
-    font-size: clamp(1.6rem, 3.1vw, 2.45rem);
-    line-height: 1.1;
+    font-size: clamp(1.45rem, 2.7vw, 2.05rem);
+    line-height: 1.12;
     letter-spacing: -0.045em;
     font-weight: 700;
     color: var(--ink-green-deep);
@@ -599,4 +599,37 @@ footer {
 .cursor {
   color: var(--terminal);
   animation: cursor-blink 1.1s steps(1, end) infinite;
+}
+
+/* ==================================================
+   Booking widget (Chime embed) host container
+   The widget itself is fully self-scoped under
+   `.chime-widget`; these rules only style the small
+   host wrapper + loading/error states around it.
+================================================== */
+.chime-embed {
+  position: relative;
+  min-height: 320px;
+}
+
+.chime-embed__host {
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.chime-embed__status {
+  padding: 3.5rem 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--sage-muted);
+}
+
+.chime-embed__status--error {
+  color: var(--clay-deep);
+}
+
+.chime-embed__status a {
+  color: var(--ink-green-deep);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }

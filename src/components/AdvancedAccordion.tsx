@@ -126,7 +126,7 @@ export default function AdvancedAccordion() {
                         {solution.icon}
                       </div>
                       <div>
-                        <h3 className="accordion-title text-[1.6rem] md:text-[1.9rem]">
+                        <h3 className="accordion-title text-[1.3rem] md:text-[1.55rem]">
                           {solution.title}
                         </h3>
                         <p className="mt-1 text-sm text-body md:text-base">

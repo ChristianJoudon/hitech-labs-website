@@ -5,6 +5,7 @@ import TrustStrip from './TrustStrip'
 import ServicesSection from './ServicesSection'
 import AdvancedAccordion from './AdvancedAccordion'
 import FAQSection from './FAQSection'
+import BookingSection from './BookingSection'
 import ContactSection from './ContactSection'
 import Footer from './Footer'
 
@@ -22,6 +23,7 @@ export default function App() {
           <ServicesSection />
           <AdvancedAccordion />
           <FAQSection />
+          <BookingSection />
           <ContactSection />
         </main>
         <Footer />

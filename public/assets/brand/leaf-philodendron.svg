@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 780" fill="none">
+  <!-- petiole / stem -->
+  <path d="M300 150 C 296 300 304 470 300 640" fill="none" stroke="#7d8a72" stroke-width="9" stroke-linecap="round"/>
+  <!-- leaf body: heart-shaped philodendron, cleft at top, point at bottom -->
+  <path d="M300 150
+           C 288 92 232 60 168 78
+           C 74 105 52 300 118 452
+           C 172 576 250 668 300 726
+           C 350 668 428 576 482 452
+           C 548 300 526 105 432 78
+           C 368 60 312 92 300 150 Z"
+        fill="#7d8a72"/>
+  <!-- midrib + radiating veins (soft light) -->
+  <g stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" opacity="0.5" fill="none">
+    <path d="M300 168 L 300 690"/>
+    <path d="M300 250 C 250 250 205 262 150 300"/>
+    <path d="M300 250 C 350 250 395 262 450 300"/>
+    <path d="M300 360 C 252 366 214 384 168 430"/>
+    <path d="M300 360 C 348 366 386 384 432 430"/>
+    <path d="M300 470 C 262 480 232 500 200 542"/>
+    <path d="M300 470 C 338 480 368 500 400 542"/>
+  </g>
+</svg>

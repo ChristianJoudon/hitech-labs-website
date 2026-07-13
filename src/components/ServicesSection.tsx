@@ -149,7 +149,7 @@ export default function ServicesSection() {
           >
             <div>
               <span className="eyebrow">Pricing</span>
-              <h3 className="sub-title mt-3 text-[2.1rem] md:text-[2.6rem]">
+              <h3 className="sub-title mt-3 text-[1.6rem] md:text-[1.9rem]">
                 Transparent pricing, no surprises
               </h3>
               <p className="mono-detail mt-3 text-[0.78rem] uppercase tracking-[0.16em] text-sage">
