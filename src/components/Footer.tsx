@@ -2,13 +2,13 @@ export default function Footer() {
   return (
     <footer className="section-shell border-t border-bordersoft bg-paper py-14">
       <img
-        src="/assets/brand/palm-frond.png"
+        src={`${import.meta.env.BASE_URL}assets/brand/palm-frond.png`}
         alt=""
         aria-hidden="true"
         className="pointer-events-none absolute left-0 top-0 hidden w-[44rem] max-w-[42vw] opacity-90 md:block"
       />
       <img
-        src="/assets/brand/palm-frond.png"
+        src={`${import.meta.env.BASE_URL}assets/brand/palm-frond.png`}
         alt=""
         aria-hidden="true"
         className="pointer-events-none absolute right-0 top-0 hidden w-[44rem] max-w-[42vw] -scale-x-100 opacity-90 md:block"

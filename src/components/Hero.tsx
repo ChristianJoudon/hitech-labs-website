@@ -19,7 +19,7 @@ export default function Hero() {
         className="pointer-events-none absolute -top-8 right-0 hidden w-[82rem] max-w-[72vw] md:block"
       >
         <img
-          src="/assets/brand/palm-hero.png"
+          src={`${import.meta.env.BASE_URL}assets/brand/palm-hero.png`}
           alt=""
           className="fern-float w-full opacity-100"
         />
