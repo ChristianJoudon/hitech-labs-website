@@ -1,8 +1,8 @@
 /* ==========================================================================
    HiTech Labs theme for the Chime booking widget.
    Loaded AFTER chime-widget.css, so these rules win by source order. It only
-   remaps the widget's design tokens (and a few embed-specific tweaks) — it does
-   not touch the widget's layout or behavior. All selectors stay under
+   remaps the widget's design tokens and handles a few embed-specific pressure
+   points without changing behavior. All selectors stay under
    `.chime-widget`, so nothing here can leak onto the host page.
    Palette + type sampled from the HiTech Labs site (warm paper, sage-forest
    greens, terracotta clay, IBM Plex Mono / Space Mono).
@@ -51,6 +51,70 @@
 }
 .chime-widget .chime-main__inner {
   padding: 0 6px;
+}
+
+/* Keep the date and availability label in separate rows. The widget is
+   embedded in a host column, so viewport breakpoints alone cannot guarantee
+   enough height or spacing inside each of the seven day columns. */
+.chime-widget .calendar-month-card {
+  container-type: inline-size;
+}
+
+.chime-widget .calendar-day {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  justify-content: space-between;
+  min-height: 64px;
+}
+
+.chime-widget .calendar-day__status {
+  align-self: stretch;
+  bottom: auto;
+  left: auto;
+  line-height: 1.05;
+  margin-top: auto;
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@container (max-width: 560px) {
+  .chime-widget .calendar-grid,
+  .chime-widget .calendar-weekdays {
+    gap: 5px;
+  }
+
+  .chime-widget .calendar-day {
+    min-height: 64px;
+    padding: 7px 6px;
+  }
+
+  .chime-widget .calendar-day__number {
+    font-size: clamp(1rem, 4cqi, 1.2rem);
+  }
+
+  .chime-widget .calendar-day__status {
+    font-size: 0.6rem;
+    letter-spacing: -0.02em;
+  }
+}
+
+@container (max-width: 430px) {
+  .chime-widget .calendar-day {
+    min-height: 48px;
+  }
+
+  .chime-widget .calendar-day__number {
+    font-size: 1rem;
+  }
+
+  .chime-widget .calendar-day__status {
+    display: none;
+  }
 }
 
 /* Terracotta clay accent, used as sparingly as the host does — the "today" dot
