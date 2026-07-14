@@ -25,9 +25,10 @@ declare global {
 }
 
 const BASE = import.meta.env.BASE_URL
-const WIDGET_CSS = `${BASE}chime/chime-widget.css`
-const THEME_CSS = `${BASE}chime/chime-hitech-theme.css`
-const WIDGET_JS = `${BASE}chime/chime-widget.js`
+const WIDGET_ASSET_VERSION = '20260713-2'
+const WIDGET_CSS = `${BASE}chime/chime-widget.css?v=${WIDGET_ASSET_VERSION}`
+const THEME_CSS = `${BASE}chime/chime-hitech-theme.css?v=${WIDGET_ASSET_VERSION}`
+const WIDGET_JS = `${BASE}chime/chime-widget.js?v=${WIDGET_ASSET_VERSION}`
 
 // Load the stylesheet + script exactly once for the whole page, no matter how
 // many BookingWidget instances mount.

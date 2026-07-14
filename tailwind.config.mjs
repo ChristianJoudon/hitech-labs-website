@@ -4,9 +4,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Warm paper / cream — sampled from the card + invoice stock
+        // Warm page stock with crisp white card surfaces
         paper: '#F6F2EC',
-        card: '#F9F6F0',
+        card: '#FFFFFF',
         mist: '#EFEAE1',
         linen: '#E8E1D6',
         // Pale sage watermark used for ferns
