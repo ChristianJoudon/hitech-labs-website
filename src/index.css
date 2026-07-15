@@ -633,3 +633,17 @@ footer {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
+
+/* ==================================================
+   Card surfaces for Core Services, Advanced Solutions,
+   and FAQ — use the trust-strip tone (#FAF7F2, the band
+   under the hero) instead of the default white card.
+   Scoped by section so the contact/pricing/booking
+   panels keep their own surface.
+================================================== */
+#services .service-card,
+#services .panel-glass,
+#advanced .panel-glass,
+#faq .panel-glass {
+  background-color: #faf7f2;
+}
