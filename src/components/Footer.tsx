@@ -32,10 +32,10 @@ export default function Footer() {
             </div>
             <div>
               <a
-                href="mailto:info@hitechlabs.com"
+                href="mailto:info@hitechlabskauai.com"
                 className="underline decoration-clay/40 underline-offset-4 transition hover:text-inkdeep"
               >
-                info@hitechlabs.com
+                info@hitechlabskauai.com
               </a>
             </div>
             <div>Princeville, Kauaʻi</div>
@@ -44,7 +44,7 @@ export default function Footer() {
 
         <div className="section-divider mt-10" />
         <div className="mt-5 text-xs text-body">
-          <p>© 2025 HiTech Labs</p>
+          <p>© 2026 HiTech Labs</p>
         </div>
       </div>
     </footer>

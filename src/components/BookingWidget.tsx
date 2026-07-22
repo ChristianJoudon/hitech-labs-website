@@ -7,8 +7,8 @@ import { useEffect, useRef, useState } from 'react'
  * React versions and Tailwind pipelines completely isolated.
  *
  * Assets live in `public/chime/` and are referenced through Vite's BASE_URL so
- * the paths resolve both in local dev (`/`) and on GitHub Pages
- * (`/hitech-labs-website/`). The bundle + theme are loaded lazily the first
+ * the paths resolve on the custom domain, in local development, and on the
+ * legacy GitHub Pages URL. The bundle and theme are loaded lazily the first
  * time a widget scrolls near the viewport, so they never weigh down first paint.
  */
 

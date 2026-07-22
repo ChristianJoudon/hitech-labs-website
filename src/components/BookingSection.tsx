@@ -3,11 +3,11 @@ import { CalendarDaysIcon } from '@heroicons/react/24/outline'
 import BookingWidget from './BookingWidget'
 
 /* ------------------------------------------------------------------ *
- * Availability — generated client-side so the widget works on a fully
- * static host (GitHub Pages). Mon–Sat, 9:00 AM–4:30 PM, 30-min slots,
+ * Availability is generated client-side so the widget works on a fully
+ * static host. Mon-Sat, 9:00 AM-4:30 PM, 30-minute request windows,
  * for the next four weeks, skipping times already past today.
  * When the Chime API/DB backend is deployed, drop `availability` and set
- * `api.availabilityUrl` instead — the widget will pull live openings.
+ * `api.availabilityUrl` instead. The widget will then pull live openings.
  * ------------------------------------------------------------------ */
 function dateKey(d: Date) {
   const y = d.getFullYear()
@@ -58,14 +58,14 @@ const bookingConfig = {
   businessName: 'HiTech Labs',
   headerTitle: 'HiTech Labs',
   description:
-    'Pick a free consult, choose a time that works, and we’ll bring clear, local tech help to your small business.',
+    'Request a free consult and choose a time that works. We’ll confirm the appointment by email or text.',
   location: 'Princeville, Kauaʻi, HI',
   services: [
     {
       id: 'tech-check',
       name: 'Free 30-Min Tech Check',
       description:
-        'A quick, no-pressure look at your tools, site, and workflows — plus one or two quick wins you can act on right away.',
+        'A quick, no-pressure look at your tools, site, and workflows, plus one or two quick wins you can act on right away.',
       durationMinutes: 30,
       depositAmountCents: 0
     },
@@ -87,9 +87,9 @@ const bookingConfig = {
     },
     {
       id: 'onsite-visit',
-      name: 'On-Site Tech Visit — Kauaʻi',
+      name: 'On-Site Tech Visit - Kauaʻi',
       description:
-        'Hands-on help at your location on the North Shore — devices, networks, point-of-sale, and whatever’s feeling stuck.',
+        'Hands-on help at your location on the North Shore for devices, networks, point-of-sale systems, and whatever is feeling stuck.',
       durationMinutes: 60,
       depositAmountCents: 0
     }
@@ -142,12 +142,12 @@ const bookingConfig = {
     headers: { Accept: 'application/json' },
     bookingUrl: 'https://formspree.io/f/manjdpkp'
   },
-  termsTitle: 'HiTech Labs — What to expect',
+  termsTitle: 'HiTech Labs - What to expect',
   termsText: `Booking a consult with HiTech Labs
 
 Thanks for booking a consult. Here’s what to expect and a couple of small things to keep in mind.
 
-Your consult is a friendly, no-obligation conversation. We’ll look at what’s feeling slow, messy, or overdue and suggest the cleanest next step — no hard sell.
+Your consult is a friendly, no-obligation conversation. We’ll look at what is feeling slow, messy, or overdue and suggest the cleanest next step. There is no hard sell.
 
 We serve Princeville, Hanalei, Kīlauea, and the North Shore of Kauaʻi. On-site visits are for that area; other consults happen by phone or video.
 
@@ -155,9 +155,9 @@ Please give us a heads-up if you need to cancel or reschedule so we can offer th
 
 We’ll use the email and phone number you provide only to confirm and prepare for your appointment.
 
-By continuing, you confirm the details above are correct and that you’d like us to reach out to confirm your appointment.`,
+The times shown are appointment requests, not guaranteed real-time availability. By continuing, you confirm the details above are correct and that you would like us to reach out to confirm your appointment.`,
   confirmationMessage:
-    'You’re on the calendar! We’ll email a confirmation and reach out to lock in the details. Mahalo — talk soon.'
+    'Your appointment request is in. We’ll email or text to confirm the time. Mahalo!'
 }
 
 export default function BookingSection() {
@@ -173,12 +173,12 @@ export default function BookingSection() {
         >
           <span className="eyebrow inline-flex items-center gap-2">
             <CalendarDaysIcon className="size-4 text-clay" aria-hidden="true" />
-            Book a time
+            Request a time
           </span>
-          <h2 className="sub-title mt-5">Book your free consult</h2>
+          <h2 className="sub-title mt-5">Request your free consult</h2>
           <p className="body-copy mt-4">
-            Real-time availability, right here. Choose a consult, pick a time,
-            and add it straight to your calendar — no phone tag required.
+            Choose a consult and request a convenient time. We’ll confirm the
+            appointment by email or text.
           </p>
         </motion.div>
 
