@@ -4,7 +4,6 @@ import {
   useScroll,
   useTransform
 } from 'framer-motion'
-import heroPalm from '../assets/palm-hero.png'
 
 export default function Hero() {
   const reduce = useReducedMotion()
@@ -17,10 +16,12 @@ export default function Hero() {
       <motion.div
         style={{ y: fernY }}
         aria-hidden="true"
-        className="pointer-events-none absolute -top-8 right-0 hidden w-[82rem] max-w-[72vw] md:block"
+        className="pointer-events-none absolute -top-4 right-[-22rem] w-[52rem] max-w-none opacity-100 sm:-right-72 sm:w-[64rem] md:-top-8 md:right-0 md:w-[82rem] md:max-w-[72vw]"
       >
         <img
-          src={heroPalm}
+          src={`${
+            import.meta.env.BASE_URL
+          }assets/brand/palm-hero.png?v=20260721-restored`}
           alt=""
           width="1672"
           height="941"
@@ -36,7 +37,9 @@ export default function Hero() {
           transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
           className="max-w-3xl"
         >
-          <span className="eyebrow">Princeville, Kauaʻi · On-island IT</span>
+          <span className="eyebrow eyebrow-line">
+            Princeville, Kauaʻi · On-island IT
+          </span>
 
           <h1 className="display-title mt-6">
             Kauaʻi web design and small-business tech.
@@ -60,11 +63,7 @@ export default function Hero() {
           </div>
 
           <p className="mono-detail mt-8 text-[0.72rem] uppercase tracking-[0.18em] text-sage">
-            <span className="font-semibold text-terminal">&gt;</span> Free
-            30-minute tech check · No pressure · No obligation
-            <span className="cursor ml-0.5" aria-hidden="true">
-              _
-            </span>
+            Free 30-minute tech check · No pressure · No obligation
           </p>
         </motion.div>
       </div>

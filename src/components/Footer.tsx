@@ -1,25 +1,33 @@
-import footerLeaf from '../assets/footer-leaf.png'
-
 export default function Footer() {
   return (
     <footer className="section-shell border-t border-bordersoft bg-paper py-14">
       <img
-        src={footerLeaf}
+        src={`${import.meta.env.BASE_URL}assets/brand/palm-frond.png`}
         alt=""
         aria-hidden="true"
-        width="768"
-        height="768"
+        width="728"
+        height="182"
         loading="lazy"
         decoding="async"
-        className="pointer-events-none absolute -bottom-16 -right-10 hidden w-96 max-w-[30vw] opacity-[0.36] md:block"
+        className="pointer-events-none absolute left-0 top-0 w-[36rem] max-w-[66vw] opacity-70 md:w-[44rem] md:max-w-[42vw] md:opacity-90"
+      />
+      <img
+        src={`${import.meta.env.BASE_URL}assets/brand/palm-frond.png`}
+        alt=""
+        aria-hidden="true"
+        width="728"
+        height="182"
+        loading="lazy"
+        decoding="async"
+        className="pointer-events-none absolute right-0 top-0 w-[36rem] max-w-[66vw] -scale-x-100 opacity-70 md:w-[44rem] md:max-w-[42vw] md:opacity-90"
       />
 
       <div className="container-shell relative">
         <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <div>
             <a href="#home" className="inline-flex flex-col leading-none">
-              <span className="font-wordmark text-[1.55rem] leading-none tracking-[-0.02em] text-inkdeep">
-                HiTech Labs
+              <span className="font-heading text-[2.3rem] leading-none tracking-[-0.045em] text-inkdeep">
+                HiTech <span className="font-normal text-ink/85">Labs</span>
               </span>
               <span className="mono-detail mt-2 text-[0.66rem] uppercase tracking-[0.26em] text-sage">
                 Small Business Systems &amp; Support

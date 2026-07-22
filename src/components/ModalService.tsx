@@ -70,7 +70,7 @@ export default function ModalService({ service, open, onClose }: Props) {
                     {service.overview}
                   </p>
 
-                  <div className="mono-detail mt-7 inline-flex rounded-full border border-clay/25 bg-clay/10 px-4 py-2 text-sm font-medium text-claydeep">
+                  <div className="mono-detail mt-7 border-t border-bordersoft pt-4 text-sm font-medium text-inkdeep">
                     {service.price}
                   </div>
 

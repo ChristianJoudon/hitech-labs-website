@@ -1,7 +1,6 @@
 import { useForm, ValidationError } from '@formspree/react'
 import { motion } from 'framer-motion'
 import {
-  CheckCircleIcon,
   EnvelopeIcon,
   MapPinIcon,
   PencilSquareIcon,
@@ -19,11 +18,9 @@ export default function ContactSection() {
       >
         <div className="container-shell">
           <div className="panel-glass mx-auto max-w-2xl p-10 text-center">
-            <CheckCircleIcon
-              className="mx-auto size-12 text-terminal"
-              aria-hidden="true"
-            />
-            <h2 className="sub-title mt-5">Mahalo</h2>
+            <h2 className="font-heading text-[2.9rem] leading-none tracking-[-0.04em] text-inkdeep">
+              Mahalo
+            </h2>
             <p className="body-copy mt-4">
               Your message is in. We will reply by email or phone as soon as we
               can.
@@ -44,7 +41,7 @@ export default function ContactSection() {
     >
       <div className="container-shell">
         <div className="mx-auto max-w-2xl text-center">
-          <span className="eyebrow">Let&apos;s talk</span>
+          <span className="eyebrow eyebrow-line">Let&apos;s talk</span>
           <h2 className="sub-title mt-5">Contact HiTech Labs</h2>
           <p className="body-copy mt-4">
             Tell us what is feeling messy, slow, or overdue. We will help you

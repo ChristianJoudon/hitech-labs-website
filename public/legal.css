@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap');
+
 :root {
   color-scheme: light;
   --paper: #f6f2ec;
-  --card: #ffffff;
+  --card: #f9f6f0;
   --border: #e5ded2;
   --ink: #33403a;
   --body: #585f58;
@@ -16,7 +18,7 @@ body {
   margin: 0;
   background: var(--paper);
   color: var(--body);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-family: 'Manrope', Inter, Arial, sans-serif;
   line-height: 1.75;
 }
 
@@ -62,8 +64,10 @@ a:focus-visible {
 
 .legal-brand {
   color: var(--ink);
-  font-size: 1.15rem;
-  font-weight: 800;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
   text-decoration: none;
 }
 
@@ -91,6 +95,8 @@ a:focus-visible {
 h1,
 h2 {
   color: var(--ink);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 600;
   line-height: 1.25;
 }
 
@@ -101,7 +107,7 @@ h1 {
 
 h2 {
   margin: 2.4rem 0 0.7rem;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
 }
 
 p,

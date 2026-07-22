@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion'
-import { CalendarDaysIcon } from '@heroicons/react/24/outline'
 import BookingWidget from './BookingWidget'
 
 /* ------------------------------------------------------------------ *
@@ -201,10 +200,7 @@ export default function BookingSection() {
           transition={{ duration: 0.7, ease: [0.19, 1, 0.22, 1] }}
           className="mx-auto max-w-2xl text-center"
         >
-          <span className="eyebrow inline-flex items-center gap-2">
-            <CalendarDaysIcon className="size-4 text-clay" aria-hidden="true" />
-            Request a time
-          </span>
+          <span className="eyebrow eyebrow-line">Request a time</span>
           <h2 className="sub-title mt-5">Request your free consult</h2>
           <p className="body-copy mt-4">
             Choose a consult and request a convenient time in Hawaii Standard

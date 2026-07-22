@@ -125,7 +125,7 @@ export default function ServicesSection() {
             transition={{ duration: 0.7, ease: [0.19, 1, 0.22, 1] }}
             className="mx-auto max-w-2xl text-center"
           >
-            <span className="eyebrow">What we do</span>
+            <span className="eyebrow eyebrow-line">What we do</span>
             <h2 className="sub-title mt-5">Core Services</h2>
             <p className="body-copy mt-4">
               Software, automation, and a little marketing to modernize your
@@ -148,8 +148,8 @@ export default function ServicesSection() {
             className="panel-glass mx-auto mt-16 flex max-w-3xl flex-col items-center gap-6 px-8 py-10 text-center md:flex-row md:justify-between md:text-left"
           >
             <div>
-              <span className="eyebrow">Pricing</span>
-              <h3 className="sub-title mt-3 text-[1.6rem] md:text-[1.9rem]">
+              <span className="eyebrow eyebrow-line">Pricing</span>
+              <h3 className="sub-title mt-3 text-[2.1rem] md:text-[2.6rem]">
                 Transparent pricing, no surprises
               </h3>
               <p className="mono-detail mt-3 text-[0.78rem] uppercase tracking-[0.16em] text-sage">

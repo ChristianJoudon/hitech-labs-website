@@ -5,27 +5,29 @@
    points without changing behavior. All selectors stay under
    `.chime-widget`, so nothing here can leak onto the host page.
    Palette + type sampled from the HiTech Labs site (warm paper, sage-forest
-   greens, terracotta clay, IBM Plex Mono / Space Mono).
+   greens, terracotta clay, Manrope, and Cormorant Garamond).
    ========================================================================== */
 
 /* The widget's own design tokens are now recolored to the HiTech palette at the
    source (chime-widget.css), so this theme only sets the warm backdrop + fonts
    and a few embed-specific tweaks. */
 .chime-widget {
-  /* Warm paper backdrop with a faint phosphor-green glow, instead of mint. */
-  background:
-    radial-gradient(circle at 12% -8%, rgba(47, 133, 90, 0.08), transparent 42%),
-    linear-gradient(180deg, #f7f3ed 0%, #faf7f1 60%, #fbf9f4 100%);
+  background: linear-gradient(180deg, #f7f3ed 0%, #faf7f1 60%, #fbf9f4 100%);
 
-  font-family: 'IBM Plex Mono', 'SFMono-Regular', ui-monospace, 'SF Mono', monospace;
+  font-family: 'Manrope', Inter, Arial, sans-serif;
 }
 
-/* Display headings in Space Mono to echo the site's terminal wordmark. */
+/* Display headings follow the site's refined editorial type. */
 .chime-widget h2,
-.chime-widget h3,
-.chime-widget .chime-progress__label {
-  font-family: 'Space Mono', 'IBM Plex Mono', monospace;
+.chime-widget h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
   letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+.chime-widget .chime-progress__label {
+  font-family: 'Manrope', Inter, Arial, sans-serif;
+  font-weight: 600;
 }
 
 /* The widget renders its own "Appointment Concierge / HiTech Labs" bar. On the
@@ -42,7 +44,7 @@
 .chime-widget .chime-orb--one,
 .chime-widget .chime-orb--two,
 .chime-widget .chime-orb--three {
-  background: rgba(47, 133, 90, 0.5);
+  background: rgba(68, 83, 74, 0.35);
 }
 
 /* Tighten the widget's page-scale padding for embedded use inside a card. */
@@ -151,13 +153,12 @@
 }
 
 /* The mint chips (deposit pill, calendar strip, summaries) were a bright, cool
-   mint that clashed with the warm paper palette. Retint to the site's soft
-   terminal-green accent. */
+   mint that clashed with the warm paper palette. Retint to the site's sage. */
 .chime-widget .service-card__pill,
 .chime-widget .calendar-stat-strip,
 .chime-widget .selection-summary,
 .chime-widget .terms-acceptance[data-unlocked='true'] {
-  background: rgba(47, 133, 90, 0.1);
-  border-color: rgba(47, 133, 90, 0.24);
-  color: #2f6b4a;
+  background: rgba(68, 83, 74, 0.08);
+  border-color: rgba(68, 83, 74, 0.2);
+  color: #44534a;
 }

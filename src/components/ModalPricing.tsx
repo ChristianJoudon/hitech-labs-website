@@ -108,7 +108,7 @@ export default function ModalPricing({
               <Dialog.Panel className="panel-glass w-full max-w-5xl overflow-hidden p-6 md:p-8">
                 <div className="mb-6 flex items-start justify-between gap-4">
                   <div>
-                    <Dialog.Title className="font-heading text-[1.7rem] leading-tight tracking-[-0.04em] text-inkdeep md:text-[2.1rem]">
+                    <Dialog.Title className="font-heading text-[2.8rem] leading-none tracking-[-0.04em] text-inkdeep md:text-[3.2rem]">
                       Transparent Pricing
                     </Dialog.Title>
                     <p className="mt-2 text-sm text-body md:text-base">
@@ -127,7 +127,7 @@ export default function ModalPricing({
                   </button>
                 </div>
 
-                <div className="overflow-hidden rounded-[22px] border border-bordersoft/90 bg-white/[0.82]">
+                <div className="overflow-hidden rounded-[22px] border border-bordersoft/90">
                   <div
                     className="max-h-[70vh] overflow-auto"
                     tabIndex={0}

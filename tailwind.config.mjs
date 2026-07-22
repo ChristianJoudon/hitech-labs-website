@@ -4,9 +4,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Warm page stock with crisp white card surfaces
+        // Warm paper / cream sampled from the card and invoice stock
         paper: '#F6F2EC',
-        card: '#FFFFFF',
+        card: '#F9F6F0',
         mist: '#EFEAE1',
         linen: '#E8E1D6',
         // Pale sage watermark used for ferns
@@ -22,17 +22,11 @@ export default {
         body: '#585F58',
         // Earthy terracotta - replaces the old dusty coral, used sparingly
         clay: '#B56A4C',
-        claydeep: '#A15C41',
-        // Phosphor-terminal green - hacker-chic accent for prompts/cursor
-        terminal: '#2F855A',
-        terminaldeep: '#256B48'
+        claydeep: '#A15C41'
       },
       fontFamily: {
-        // Bold geometric sans for the "HiTech Labs" wordmark/logo
-        wordmark: ['"Archivo Black"', 'system-ui', 'sans-serif'],
-        // Monospace display + body - the terminal direction
-        heading: ['"Space Mono"', '"IBM Plex Mono"', 'monospace'],
-        body: ['"IBM Plex Mono"', '"SFMono-Regular"', 'monospace'],
+        heading: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+        body: ['Manrope', 'Inter', 'Arial', 'sans-serif'],
         mono: ['"IBM Plex Mono"', '"SFMono-Regular"', 'monospace']
       },
       boxShadow: {

@@ -103,7 +103,7 @@ export default function AdvancedAccordion() {
     >
       <div className="container-shell">
         <div className="mx-auto max-w-2xl text-center">
-          <span className="eyebrow">Going further</span>
+          <span className="eyebrow eyebrow-line">Going further</span>
           <h2 className="sub-title mt-5">Advanced Solutions</h2>
           <p className="body-copy mt-4">
             Higher-leverage systems for businesses that need cleaner data,
@@ -122,11 +122,11 @@ export default function AdvancedAccordion() {
                 >
                   <Disclosure.Button className="flex w-full items-center justify-between gap-4 p-5 text-left md:px-7">
                     <div className="flex items-center gap-4">
-                      <div className="flex size-11 shrink-0 items-center justify-center rounded-full bg-clay/[0.12] text-clay">
+                      <div className="flex size-11 shrink-0 items-center justify-center text-clay">
                         {solution.icon}
                       </div>
                       <div>
-                        <h3 className="accordion-title text-[1.3rem] md:text-[1.55rem]">
+                        <h3 className="accordion-title text-[1.6rem] md:text-[1.9rem]">
                           {solution.title}
                         </h3>
                         <p className="mt-1 text-sm text-body md:text-base">
@@ -178,7 +178,7 @@ export default function AdvancedAccordion() {
                                 {solution.tech}
                               </p>
 
-                              <div className="mt-5 inline-flex rounded-full bg-clay/[0.12] px-4 py-2 text-sm font-medium text-inkdeep">
+                              <div className="mt-5 border-t border-bordersoft pt-4 text-sm font-medium text-inkdeep">
                                 {solution.price}
                               </div>
 
