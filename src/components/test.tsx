@@ -7,7 +7,7 @@ describe('<App />', () => {
 
     expect(
       screen.getByRole('heading', {
-        name: /Small-business tech\./i,
+        name: /Kauaʻi web design and small-business tech\./i,
         level: 1
       })
     ).toBeInTheDocument()
@@ -16,6 +16,16 @@ describe('<App />', () => {
       screen.getByRole('link', {
         name: /Book Your Free 30-min Tech Check/i
       })
+    ).toBeInTheDocument()
+
+    expect(
+      screen.getByRole('heading', { name: /Services/i })
+    ).toBeInTheDocument()
+    expect(
+      screen.getByRole('heading', { name: /Request your free consult/i })
+    ).toBeInTheDocument()
+    expect(
+      screen.getByRole('heading', { name: /Contact HiTech Labs/i })
     ).toBeInTheDocument()
 
     expect(container.firstChild).toBeInTheDocument()

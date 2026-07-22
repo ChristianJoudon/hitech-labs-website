@@ -4,11 +4,12 @@ import {
   useScroll,
   useTransform
 } from 'framer-motion'
+import heroPalm from '../assets/palm-hero.png'
 
 export default function Hero() {
   const reduce = useReducedMotion()
   const { scrollY } = useScroll()
-  // Gentle downward drift of the fern as you scroll — disabled for reduced-motion
+  // Gentle downward drift of the fern as you scroll - disabled for reduced-motion
   const fernY = useTransform(scrollY, [0, 600], [0, reduce ? 0 : 90])
 
   return (
@@ -19,8 +20,11 @@ export default function Hero() {
         className="pointer-events-none absolute -top-8 right-0 hidden w-[82rem] max-w-[72vw] md:block"
       >
         <img
-          src={`${import.meta.env.BASE_URL}assets/brand/palm-hero.png`}
+          src={heroPalm}
           alt=""
+          width="1672"
+          height="941"
+          decoding="async"
           className="fern-float w-full opacity-100"
         />
       </motion.div>
@@ -34,11 +38,13 @@ export default function Hero() {
         >
           <span className="eyebrow">Princeville, Kauaʻi · On-island IT</span>
 
-          <h1 className="display-title mt-6">Small-business tech.</h1>
+          <h1 className="display-title mt-6">
+            Kauaʻi web design and small-business tech.
+          </h1>
 
           <p className="mt-7 max-w-xl text-lg leading-8 text-body md:text-[1.32rem] md:leading-9">
-            Local support. Tech that&rsquo;s easy, so you can get back to
-            running your business.
+            Modern websites, software, automation, and practical support so you
+            can spend more time running your business.
           </p>
 
           <div className="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center">

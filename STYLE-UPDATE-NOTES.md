@@ -1,7 +1,7 @@
-# HiTech Labs refresh — third pass (refined editorial)
+# HiTech Labs refresh - third pass (refined editorial)
 
 Goal: make the site match the printed brand mockups (logo, business card, invoice)
-as closely as possible — modern, minimal, effortless, Hawaiian, incredibly professional.
+as closely as possible - modern, minimal, effortless, Hawaiian, incredibly professional.
 No about-me or reviews section.
 
 ## Brand system (now the single source of truth)
@@ -15,7 +15,7 @@ Colors sampled from the real logo (#2A3832) and business card (#3C4943):
   eyebrow, icons, links (replaces the old dusty pink `#CFA69D` / `coral` token)
 - Pale sage fern watermark `#D8D1CB`
 
-Type: ONE serif everywhere — Cormorant Garamond 600 (dropped Lora). Body: Manrope.
+Type: ONE serif everywhere - Cormorant Garamond 600 (dropped Lora). Body: Manrope.
 Detail/labels/phone: IBM Plex Mono (echoes the card + invoice).
 
 ## What changed
@@ -44,7 +44,6 @@ Detail/labels/phone: IBM Plex Mono (echoes the card + invoice).
 
 ## Status
 
-`npm run build` and `npx tsc --noEmit` pass. `npx eslint src` reports 0 errors (5 warnings
-are just the tailwind plugin not recognizing valid arbitrary-opacity classes like `bg-clay/12`).
-Vitest still can't run in this copy — it references a missing `.vitest/setup` file (pre-existing
-infra issue, unrelated to the app).
+`npm run build`, `npm run typecheck`, `npm run lint`, and `npm run test:run` pass.
+The test environment is configured in `.vitest/setup.ts`, and GitHub Actions repeats
+the complete quality check for every pull request and every push to `main`.

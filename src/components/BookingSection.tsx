@@ -9,34 +9,62 @@ import BookingWidget from './BookingWidget'
  * When the Chime API/DB backend is deployed, drop `availability` and set
  * `api.availabilityUrl` instead. The widget will then pull live openings.
  * ------------------------------------------------------------------ */
+const HAWAII_TIME_ZONE = 'Pacific/Honolulu'
+const HAWAII_UTC_OFFSET_HOURS = 10
+
 function dateKey(d: Date) {
-  const y = d.getFullYear()
-  const m = String(d.getMonth() + 1).padStart(2, '0')
-  const day = String(d.getDate()).padStart(2, '0')
+  const y = d.getUTCFullYear()
+  const m = String(d.getUTCMonth() + 1).padStart(2, '0')
+  const day = String(d.getUTCDate()).padStart(2, '0')
   return `${y}-${m}-${day}`
+}
+
+function hawaiiCalendarDate(now: Date) {
+  const parts = new Intl.DateTimeFormat('en-US', {
+    timeZone: HAWAII_TIME_ZONE,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit'
+  }).formatToParts(now)
+  const values = Object.fromEntries(
+    parts.map(({ type, value }) => [type, value])
+  )
+
+  return new Date(
+    Date.UTC(Number(values.year), Number(values.month) - 1, Number(values.day))
+  )
+}
+
+function hawaiiTimeOn(date: Date, hour: number, minute: number) {
+  return new Date(
+    Date.UTC(
+      date.getUTCFullYear(),
+      date.getUTCMonth(),
+      date.getUTCDate(),
+      hour + HAWAII_UTC_OFFSET_HOURS,
+      minute
+    )
+  )
 }
 
 function buildAvailability() {
   const days: Array<{ date: string; slots: Array<Record<string, unknown>> }> =
     []
   const now = new Date()
-  const start = new Date(now)
-  start.setHours(0, 0, 0, 0)
+  const start = hawaiiCalendarDate(now)
 
   for (let i = 0; i < 28; i += 1) {
     const date = new Date(start)
-    date.setDate(start.getDate() + i)
-    if (date.getDay() === 0) continue // closed Sundays
+    date.setUTCDate(start.getUTCDate() + i)
+    if (date.getUTCDay() === 0) continue // closed Sundays
 
     const slots: Array<Record<string, unknown>> = []
     for (let h = 9; h < 17; h += 1) {
       for (const m of [0, 30]) {
-        const s = new Date(date)
-        s.setHours(h, m, 0, 0)
+        const s = hawaiiTimeOn(date, h, m)
         if (s.getTime() <= now.getTime()) continue // no past times today
 
-        const e = new Date(date)
-        e.setHours(h, m + 30, 0, 0)
+        const e = hawaiiTimeOn(date, h, m + 30)
         const hour12 = h % 12 === 0 ? 12 : h % 12
         const suffix = h < 12 ? 'AM' : 'PM'
         slots.push({
@@ -58,7 +86,7 @@ const bookingConfig = {
   businessName: 'HiTech Labs',
   headerTitle: 'HiTech Labs',
   description:
-    'Request a free consult and choose a time that works. We’ll confirm the appointment by email or text.',
+    'Request a free consult and choose a preferred time in Hawaii Standard Time. We’ll confirm the appointment by email or text.',
   location: 'Princeville, Kauaʻi, HI',
   services: [
     {
@@ -155,6 +183,8 @@ Please give us a heads-up if you need to cancel or reschedule so we can offer th
 
 We’ll use the email and phone number you provide only to confirm and prepare for your appointment.
 
+All request times are shown in Hawaii Standard Time.
+
 The times shown are appointment requests, not guaranteed real-time availability. By continuing, you confirm the details above are correct and that you would like us to reach out to confirm your appointment.`,
   confirmationMessage:
     'Your appointment request is in. We’ll email or text to confirm the time. Mahalo!'
@@ -177,8 +207,8 @@ export default function BookingSection() {
           </span>
           <h2 className="sub-title mt-5">Request your free consult</h2>
           <p className="body-copy mt-4">
-            Choose a consult and request a convenient time. We’ll confirm the
-            appointment by email or text.
+            Choose a consult and request a convenient time in Hawaii Standard
+            Time. We’ll confirm the appointment by email or text.
           </p>
         </motion.div>
 

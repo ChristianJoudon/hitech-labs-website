@@ -11,37 +11,37 @@ const data: Section[] = [
     rows: [
       {
         name: 'Website & SEO Tune-Up',
-        onetime: '$855-1.27k',
+        onetime: '$855 to $1,270',
         monthly: '$225',
         third: 'Domain $15/yr • Hosting $10-30/mo'
       },
       {
         name: 'Workflow Automation',
-        onetime: '$680-1.02k',
+        onetime: '$680 to $1,020',
         monthly: '$200',
         third: 'Zapier $20+/mo'
       },
       {
         name: 'AI & Smart Tools',
-        onetime: '$650-1.1k',
+        onetime: '$650 to $1,100',
         monthly: '$180',
         third: 'AI usage $0-40/mo'
       },
       {
         name: 'Online Booking Setup',
-        onetime: '$935-1.45k',
+        onetime: '$935 to $1,450',
         monthly: '$240',
         third: 'FareHarbor 6% • Stripe 2.9% + 30¢'
       },
       {
         name: 'Digital Marketing',
-        onetime: '$680-1.02k',
+        onetime: '$680 to $1,020',
         monthly: '$210',
         third: 'Mailchimp $0-13/mo'
       },
       {
         name: 'Tech Tune-Up',
-        onetime: '$300-600',
+        onetime: '$300 to $600',
         monthly: 'n/a',
         third: 'Health check + roadmap'
       }
@@ -64,7 +64,7 @@ const data: Section[] = [
       },
       {
         name: 'Seasonal Tune-Up',
-        onetime: '$425-765',
+        onetime: '$425 to $765',
         monthly: 'n/a',
         third: 'n/a'
       }
@@ -127,7 +127,7 @@ export default function ModalPricing({
                   </button>
                 </div>
 
-                <div className="bg-white/82 overflow-hidden rounded-[22px] border border-bordersoft/90">
+                <div className="overflow-hidden rounded-[22px] border border-bordersoft/90 bg-white/[0.82]">
                   <div
                     className="max-h-[70vh] overflow-auto"
                     tabIndex={0}
@@ -184,7 +184,8 @@ export default function ModalPricing({
                 </div>
 
                 <p className="mt-5 text-right text-xs text-body">
-                  Prices exclude Hawaiʻi GET (4.712%).
+                  Prices exclude Hawaiʻi GET (4.712%). Final scope and pricing
+                  are confirmed in a written proposal.
                 </p>
               </Dialog.Panel>
             </Transition.Child>

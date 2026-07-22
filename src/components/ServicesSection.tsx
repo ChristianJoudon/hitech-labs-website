@@ -22,13 +22,13 @@ const services: ServiceWithIcon[] = [
     tagline: 'Be found. Load instantly.',
     why: 'Visitors bail after a slow load and often never come back.',
     bullets: [
-      'Mobile-first speed pass (Core Web Vitals)',
-      'Keyword, meta & Google Business cleanup',
-      'Analytics baseline + local citation pass'
+      'Mobile-first speed and Core Web Vitals review',
+      'Keyword, metadata, and Google Business cleanup',
+      'Analytics baseline and local listing review'
     ],
     overview:
-      'We modernize and streamline your site, polish your listings, and benchmark results so you climb search rankings and stay there.',
-    price: 'Starter package $855-1.27 k • 1-2 weeks',
+      'We modernize and streamline your site, polish your listings, and build a stronger foundation for local search visibility.',
+    price: 'Starter package: $855 to $1,270 • Typical timeline: 1 to 2 weeks',
     icon: <GlobeAltIcon />
   },
   {
@@ -43,7 +43,7 @@ const services: ServiceWithIcon[] = [
     ],
     overview:
       'We map your repetitive tasks, build no-code automations, and surface the payoff in plain language.',
-    price: 'Starter package $680-1.02 k • 1 week',
+    price: 'Starter package: $680 to $1,020 • Typical timeline: 1 week',
     icon: <Cog6ToothIcon />
   },
   {
@@ -58,14 +58,14 @@ const services: ServiceWithIcon[] = [
     ],
     overview:
       'We add practical AI where it actually saves time. No hype, just a few well-chosen tools that handle the busywork so you don’t have to.',
-    price: 'Starter package $650-1.1 k • 1 week',
+    price: 'Starter package: $650 to $1,100 • Typical timeline: 1 week',
     icon: <SparklesIcon />
   },
   {
     id: 'S-4',
     title: 'Online Booking Setup',
     tagline: 'Book anytime, anywhere.',
-    why: 'Phone-tag costs tours and rentals dozens of bookings a month.',
+    why: 'Manual phone tag can cost bookings and valuable staff time.',
     bullets: [
       'FareHarbor / Acuity configuration',
       'Calendar & payment sync (Stripe / Square)',
@@ -73,7 +73,7 @@ const services: ServiceWithIcon[] = [
     ],
     overview:
       'Guests see real-time availability and pay in seconds; you wake up to confirmed reservations instead of missed calls.',
-    price: 'Starter package $935-1.45 k • 1-2 weeks',
+    price: 'Starter package: $935 to $1,450 • Typical timeline: 1 to 2 weeks',
     icon: <CalendarDaysIcon />
   },
   {
@@ -88,7 +88,7 @@ const services: ServiceWithIcon[] = [
     ],
     overview:
       'From first follow to repeat booking, we automate friendly touchpoints that bring fans back season after season.',
-    price: 'Starter package $680-1.02 k • 1 week',
+    price: 'Starter package: $680 to $1,020 • Typical timeline: 1 week',
     icon: <MegaphoneIcon />
   },
   {
@@ -103,7 +103,7 @@ const services: ServiceWithIcon[] = [
     ],
     overview:
       'We map everything you’re running, trim what’s redundant, and hand you a clear plan, plus a few quick wins, to modernize without the overwhelm.',
-    price: 'Health check $300 • roadmap from $600',
+    price: 'Health check: $300 • Roadmap packages from $600',
     icon: <WrenchScrewdriverIcon />
   }
 ]

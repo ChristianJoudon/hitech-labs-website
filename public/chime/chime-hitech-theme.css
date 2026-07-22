@@ -30,7 +30,7 @@
 
 /* The widget renders its own "Appointment Concierge / HiTech Labs" bar. On the
    site the section already has a heading, and a sticky bar would collide with
-   the fixed HiTech navbar — so hide it and let the flow start at the steps. */
+   the fixed HiTech navbar - so hide it and let the flow start at the steps. */
 .chime-widget .chime-header {
   display: none;
 }
@@ -117,7 +117,7 @@
   }
 }
 
-/* Terracotta clay accent, used as sparingly as the host does — the "today" dot
+/* Terracotta clay accent, used as sparingly as the host does - the "today" dot
    and the required-field marker pick it up so it doesn't read as all-green. */
 .chime-widget .calendar-day[data-today='true'] .calendar-day__number::after {
   background: #b56a4c;
@@ -131,7 +131,7 @@
    ========================================================================== */
 
 /* The per-step heading ("Choose your appointment type") rendered larger than
-   the site's own section titles — bring it in line. */
+   the site's own section titles - bring it in line. */
 .chime-widget h2 {
   font-size: clamp(1.35rem, 3vw, 1.8rem);
   line-height: 1.16;

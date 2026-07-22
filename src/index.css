@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 /* ==================================================
-   HiTech Labs — design tokens
+   HiTech Labs - design tokens
    Warm cream paper, deep sage-forest greens, and a
    single earthy terracotta accent used sparingly.
 ================================================== */
@@ -16,14 +16,14 @@
   --linen: #e8e1d6;
   --fern-watermark: #d8d1cb;
   --border-soft: #e5ded2;
-  --sage-muted: #6e7269;
+  --sage-muted: #626860;
   --ink-green: #44534a;
   --ink-green-deep: #33403a;
   --forest: #2a3832;
   --body-text: #585f58;
   --clay: #b56a4c;
   --clay-deep: #a15c41;
-  /* Phosphor-terminal green — used sparingly for prompts, cursor, terminal glyphs */
+  /* Phosphor-terminal green - used sparingly for prompts, cursor, terminal glyphs */
   --terminal: #2f855a;
   --terminal-deep: #256b48;
 }
@@ -100,7 +100,7 @@ body {
   }
 }
 
-/* Skip-to-content link — visible only on keyboard focus */
+/* Skip-to-content link - visible only on keyboard focus */
 .skip-link {
   position: absolute;
   left: 1rem;
@@ -137,7 +137,7 @@ footer {
   isolation: isolate;
 }
 
-/* Paper texture — limited to the hero so the rest of the page stays clean */
+/* Paper texture - limited to the hero so the rest of the page stays clean */
 #home::before {
   content: '';
   position: absolute;
@@ -150,7 +150,7 @@ footer {
   opacity: 0.42;
 }
 
-/* Faint CRT scanlines over the hero — the "terminal" whisper */
+/* Faint CRT scanlines over the hero - the "terminal" whisper */
 #home::after {
   content: '';
   position: absolute;
@@ -185,6 +185,61 @@ footer {
     max-width: 74rem;
     margin-inline: auto;
     padding-inline: 1.5rem;
+  }
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+
+  .form-label {
+    color: var(--ink-green-deep);
+    font-size: 0.82rem;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  .form-control {
+    width: 100%;
+    min-height: 3rem;
+    border: 1px solid var(--border-soft);
+    border-radius: 16px;
+    background: #fff;
+    padding: 0.78rem 0.95rem;
+    color: var(--ink-green-deep);
+    font: inherit;
+    font-size: 0.94rem;
+    line-height: 1.5;
+    transition:
+      border-color 180ms ease,
+      box-shadow 180ms ease;
+  }
+
+  .form-control::placeholder {
+    color: var(--sage-muted);
+  }
+
+  .form-control:focus {
+    border-color: var(--ink-green);
+    box-shadow: 0 0 0 3px rgba(68, 83, 74, 0.12);
+    outline: none;
+  }
+
+  .form-honeypot {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .text-link {
+    color: var(--ink-green-deep);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: rgba(181, 106, 76, 0.55);
+    text-underline-offset: 4px;
   }
 
   @media (min-width: 640px) {
@@ -362,7 +417,7 @@ footer {
     overflow: hidden;
   }
 
-  /* Solid green — the primary action, matches the monogram */
+  /* Solid green - the primary action, matches the monogram */
   .btn-pill-solid {
     border: 1px solid var(--ink-green-deep);
     background-color: var(--ink-green-deep);
@@ -377,7 +432,7 @@ footer {
     box-shadow: 0 20px 42px rgba(42, 56, 50, 0.22);
   }
 
-  /* Outline — secondary action on paper */
+  /* Outline - secondary action on paper */
   .btn-pill {
     border: 1px solid rgba(68, 83, 74, 0.28);
     background-color: transparent;
@@ -636,7 +691,7 @@ footer {
 
 /* ==================================================
    Card surfaces for Core Services, Advanced Solutions,
-   and FAQ — use the trust-strip tone (#FAF7F2, the band
+   and FAQ - use the trust-strip tone (#FAF7F2, the band
    under the hero) instead of the default white card.
    Scoped by section so the contact/pricing/booking
    panels keep their own surface.

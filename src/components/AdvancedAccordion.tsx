@@ -31,7 +31,7 @@ const solutions: Solution[] = [
     overview:
       'We centralize sales, bookings, and marketing data, then surface trends you can act on before high season hits.',
     tech: 'BigQuery, dbt, Looker Studio',
-    price: 'Starter $2.4k-3.2k • 3-4 weeks',
+    price: 'Starter: $2,400 to $3,200 • 3 to 4 weeks',
     icon: <ChartBarIcon />
   },
   {
@@ -45,7 +45,7 @@ const solutions: Solution[] = [
     overview:
       'We apply AI where it actually helps: lighter models, clear outputs, and dashboards your team will really use.',
     tech: 'OpenAI API, Vertex AI, TensorFlow Lite',
-    price: 'Pilot $3k-4.5k • 4-6 weeks',
+    price: 'Pilot: $3,000 to $4,500 • 4 to 6 weeks',
     icon: <CpuChipIcon />
   },
   {
@@ -59,7 +59,7 @@ const solutions: Solution[] = [
     overview:
       'We prototype in a sandbox, then roll out in phases so adoption sticks and downtime stays near zero.',
     tech: 'HubSpot, Odoo Cloud, Zapier',
-    price: 'Starter $2k-3k • 3 weeks',
+    price: 'Starter: $2,000 to $3,000 • 3 weeks',
     icon: <SquaresPlusIcon />
   },
   {
@@ -73,7 +73,7 @@ const solutions: Solution[] = [
     overview:
       'Typical jobs connect POS to accounting or booking to CRM, with careful rollbacks and safeguards built in.',
     tech: 'Node.js, Supabase Edge, Make',
-    price: 'Starter $1.6k-2.5k • 2-3 weeks',
+    price: 'Starter: $1,600 to $2,500 • 2 to 3 weeks',
     icon: <ArrowsRightLeftIcon />
   },
   {
@@ -87,7 +87,7 @@ const solutions: Solution[] = [
     overview:
       'From first whiteboard to clickable MVP in days, then refine the workflow with your team in real time.',
     tech: 'Bubble, Retool, Supabase',
-    price: 'Starter $2.2k-3k • 3-4 weeks',
+    price: 'Starter: $2,200 to $3,000 • 3 to 4 weeks',
     icon: <PuzzlePieceIcon />
   }
 ]
@@ -122,7 +122,7 @@ export default function AdvancedAccordion() {
                 >
                   <Disclosure.Button className="flex w-full items-center justify-between gap-4 p-5 text-left md:px-7">
                     <div className="flex items-center gap-4">
-                      <div className="bg-clay/12 flex size-11 shrink-0 items-center justify-center rounded-full text-clay">
+                      <div className="flex size-11 shrink-0 items-center justify-center rounded-full bg-clay/[0.12] text-clay">
                         {solution.icon}
                       </div>
                       <div>
@@ -178,12 +178,12 @@ export default function AdvancedAccordion() {
                                 {solution.tech}
                               </p>
 
-                              <div className="bg-clay/12 mt-5 inline-flex rounded-full px-4 py-2 text-sm font-medium text-inkdeep">
+                              <div className="mt-5 inline-flex rounded-full bg-clay/[0.12] px-4 py-2 text-sm font-medium text-inkdeep">
                                 {solution.price}
                               </div>
 
                               <div className="mt-5">
-                                <a href="#contact" className="btn-pill">
+                                <a href="#book" className="btn-pill">
                                   Book discovery call
                                 </a>
                               </div>

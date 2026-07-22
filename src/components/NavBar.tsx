@@ -48,7 +48,7 @@ export default function NavBar() {
           >
             <BrandLockup />
 
-            <div className="hidden items-center gap-5 md:flex">
+            <div className="hidden items-center gap-5 lg:flex">
               <ul className="flex items-center gap-5 text-[0.8rem] font-medium">
                 {navItems.map((item) => {
                   const isActive = active === item.id
@@ -84,7 +84,7 @@ export default function NavBar() {
 
             <Disclosure.Button
               aria-label={open ? 'Close menu' : 'Open menu'}
-              className="inline-flex rounded-full border border-bordersoft bg-card p-2 text-inkdeep shadow-card md:hidden"
+              className="inline-flex rounded-full border border-bordersoft bg-card p-2 text-inkdeep shadow-card lg:hidden"
             >
               {open ? (
                 <XMarkIcon className="size-5" />
@@ -94,7 +94,7 @@ export default function NavBar() {
             </Disclosure.Button>
           </div>
 
-          <Disclosure.Panel className="bg-paper/97 border-t border-bordersoft backdrop-blur-md md:hidden">
+          <Disclosure.Panel className="border-t border-bordersoft bg-paper/[0.97] backdrop-blur-md lg:hidden">
             <div className="container-shell flex flex-col gap-2.5 py-4">
               {navItems.map((item) => (
                 <Disclosure.Button

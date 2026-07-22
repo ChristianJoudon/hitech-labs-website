@@ -79,7 +79,7 @@ export default function FAQSection() {
                 >
                   <Disclosure.Button className="flex w-full items-center justify-between gap-4 p-5 text-left md:px-7">
                     <div className="flex items-start gap-4">
-                      <div className="bg-clay/12 mt-1 flex size-10 shrink-0 items-center justify-center rounded-full text-clay">
+                      <div className="mt-1 flex size-10 shrink-0 items-center justify-center rounded-full bg-clay/[0.12] text-clay">
                         {item.icon}
                       </div>
                       <h3 className="font-mono text-[1rem] font-semibold leading-snug tracking-[-0.01em] text-inkdeep md:text-[1.18rem]">
@@ -122,7 +122,7 @@ export default function FAQSection() {
         </div>
 
         <div className="mt-10 text-center">
-          <a href="#contact" className="btn-pill">
+          <a href="#book" className="btn-pill">
             Schedule a Free Consult
           </a>
         </div>
