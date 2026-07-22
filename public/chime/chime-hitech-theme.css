@@ -13,11 +13,15 @@
    and a few embed-specific tweaks. */
 .chime-widget {
   /* Warm paper backdrop with a faint phosphor-green glow, instead of mint. */
-  background:
-    radial-gradient(circle at 12% -8%, rgba(47, 133, 90, 0.08), transparent 42%),
+  background: radial-gradient(
+      circle at 12% -8%,
+      rgba(47, 133, 90, 0.08),
+      transparent 42%
+    ),
     linear-gradient(180deg, #f7f3ed 0%, #faf7f1 60%, #fbf9f4 100%);
 
-  font-family: 'IBM Plex Mono', 'SFMono-Regular', ui-monospace, 'SF Mono', monospace;
+  font-family: 'IBM Plex Mono', 'SFMono-Regular', ui-monospace, 'SF Mono',
+    monospace;
 }
 
 /* Display headings in Space Mono to echo the site's terminal wordmark. */
@@ -160,4 +164,43 @@
   background: rgba(47, 133, 90, 0.1);
   border-color: rgba(47, 133, 90, 0.24);
   color: #2f6b4a;
+}
+
+/* Replace the animated mirror-like sweep with a calm pastel recolor. */
+.chime-widget .service-card__shine {
+  display: none;
+}
+
+.chime-widget .service-card:hover:not([data-selected='true']) {
+  background: #edf2e9;
+  border-color: rgba(47, 107, 74, 0.3);
+}
+
+.chime-widget .service-card[data-selected='true'] {
+  background: #e2eadf;
+}
+
+/* Keep calendar dates flat and matte. Each status gets one pastel fill. */
+.chime-widget .calendar-day {
+  background: #f5f1ea;
+}
+
+.chime-widget .calendar-day__glow {
+  display: none;
+}
+
+.chime-widget .calendar-day[data-tone='open'] {
+  background: #e5ebe0;
+}
+
+.chime-widget .calendar-day[data-tone='limited'] {
+  background: #eee8dc;
+}
+
+.chime-widget .calendar-day[data-tone='full'] {
+  background: #f2ede4;
+}
+
+.chime-widget .calendar-day[data-active='true'] {
+  background: #d9e3d5;
 }

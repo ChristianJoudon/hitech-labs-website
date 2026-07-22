@@ -14,7 +14,7 @@ const approved = {
   'public/assets/brand/palm-hero.png':
     'ee5e2656cba2f2e05a52802bccd956e87bcd0f00af9d613e93c096e096cda98b',
   'public/chime/chime-hitech-theme.css':
-    '9f71c9852ba9eba03b5f3aebd8bbcdc4f4857298eedf92a8751db158a2d9d8bb',
+    'c2d30cf03edd5171ffcb585af2ff128a162518a5d53caaf813fdacfe52175c1c',
   'public/chime/chime-widget.css':
     '67035b60f79500105c3903a7fe8f022cbfe7539223f4906bf686f3ea71e8cf19',
   'public/chime/chime-widget.js':
@@ -28,7 +28,7 @@ const approved = {
   'src/components/BookingSection.tsx':
     'da1aaf6b9345e787ea637e26419ea8a05cdd78e4d4b5657e60ef3317474ac6f0',
   'src/components/BookingWidget.tsx':
-    '52609ce9e7853f4483870947a3c6f3ef781e2bfb9a6044213cfa2228f33fe253',
+    '206cae8a4f6e69c263375fd152621ec18fbc7d2126baab2a283f75270a2036d8',
   'src/components/ContactSection.tsx':
     'bc73c14bb44ea123ab8d4e5e024d73aee34efc871a4975e42bd1e4d12bdfcef0',
   'src/components/FAQSection.tsx':

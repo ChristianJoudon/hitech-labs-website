@@ -25,7 +25,7 @@ declare global {
 }
 
 const BASE = import.meta.env.BASE_URL
-const WIDGET_ASSET_VERSION = '20260713-2'
+const WIDGET_ASSET_VERSION = '20260722-1'
 const WIDGET_CSS = `${BASE}chime/chime-widget.css?v=${WIDGET_ASSET_VERSION}`
 const THEME_CSS = `${BASE}chime/chime-hitech-theme.css?v=${WIDGET_ASSET_VERSION}`
 const WIDGET_JS = `${BASE}chime/chime-widget.js?v=${WIDGET_ASSET_VERSION}`
