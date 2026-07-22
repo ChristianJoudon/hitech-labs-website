@@ -24,7 +24,7 @@ export default function Footer() {
           <div className="mono-detail text-sm leading-7 text-body md:text-right">
             <div>
               <a
-                href="tel:808-639-8697"
+                href="tel:+18086398697"
                 className="underline decoration-clay/40 underline-offset-4 transition hover:text-inkdeep"
               >
                 808-639-8697

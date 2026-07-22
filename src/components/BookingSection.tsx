@@ -2,57 +2,6 @@ import { motion } from 'framer-motion'
 import { CalendarDaysIcon } from '@heroicons/react/24/outline'
 import BookingWidget from './BookingWidget'
 
-/* ------------------------------------------------------------------ *
- * Availability is generated client-side so the widget works on a fully
- * static host. Mon-Sat, 9:00 AM-4:30 PM, 30-minute request windows,
- * for the next four weeks, skipping times already past today.
- * When the Chime API/DB backend is deployed, drop `availability` and set
- * `api.availabilityUrl` instead. The widget will then pull live openings.
- * ------------------------------------------------------------------ */
-function dateKey(d: Date) {
-  const y = d.getFullYear()
-  const m = String(d.getMonth() + 1).padStart(2, '0')
-  const day = String(d.getDate()).padStart(2, '0')
-  return `${y}-${m}-${day}`
-}
-
-function buildAvailability() {
-  const days: Array<{ date: string; slots: Array<Record<string, unknown>> }> =
-    []
-  const now = new Date()
-  const start = new Date(now)
-  start.setHours(0, 0, 0, 0)
-
-  for (let i = 0; i < 28; i += 1) {
-    const date = new Date(start)
-    date.setDate(start.getDate() + i)
-    if (date.getDay() === 0) continue // closed Sundays
-
-    const slots: Array<Record<string, unknown>> = []
-    for (let h = 9; h < 17; h += 1) {
-      for (const m of [0, 30]) {
-        const s = new Date(date)
-        s.setHours(h, m, 0, 0)
-        if (s.getTime() <= now.getTime()) continue // no past times today
-
-        const e = new Date(date)
-        e.setHours(h, m + 30, 0, 0)
-        const hour12 = h % 12 === 0 ? 12 : h % 12
-        const suffix = h < 12 ? 'AM' : 'PM'
-        slots.push({
-          id: `${dateKey(date)}-${h}${m === 0 ? '00' : '30'}`,
-          timeLabel: `${hour12}:${m === 0 ? '00' : '30'} ${suffix}`,
-          available: true,
-          startsAt: s.toISOString(),
-          endsAt: e.toISOString()
-        })
-      }
-    }
-    if (slots.length) days.push({ date: dateKey(date), slots })
-  }
-  return days
-}
-
 /* Stable module-level config reference (never recreated across renders). */
 const bookingConfig = {
   businessName: 'HiTech Labs',
@@ -94,7 +43,6 @@ const bookingConfig = {
       depositAmountCents: 0
     }
   ],
-  availability: buildAvailability(),
   // Free consults: no deposit, so the flow skips the payment step cleanly.
   // To take deposits later, give a service a depositAmountCents > 0 and set
   // payment.stripePublishableKey + api.paymentIntentUrl (see the chime server).
@@ -136,11 +84,12 @@ const bookingConfig = {
       type: 'textarea'
     }
   ],
-  // Bookings post to the same Formspree inbox the contact form already uses,
-  // so they arrive in the HiTech Labs inbox with no backend required.
+  // Availability and reservations pass through same-origin Cloudflare
+  // functions. Google credentials remain server-side and never reach visitors.
   api: {
     headers: { Accept: 'application/json' },
-    bookingUrl: 'https://formspree.io/f/manjdpkp'
+    availabilityUrl: '/api/calendar-availability',
+    bookingUrl: '/api/calendar-bookings'
   },
   termsTitle: 'HiTech Labs - What to expect',
   termsText: `Booking a consult with HiTech Labs

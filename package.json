@@ -19,9 +19,11 @@
     "build": "tsc && vite build",
     "serve": "vite preview",
     "test": "vitest",
+    "test:run": "vitest run",
     "test:ui": "vitest --ui",
     "lint": "eslint src --max-warnings=0",
-    "typecheck": "tsc --project tsconfig.json --noEmit"
+    "typecheck": "tsc --project tsconfig.json --noEmit",
+    "verify:design": "node scripts/verify-design-lock.mjs"
   },
   "dependencies": {
     "@formspree/react": "^2.4.1",

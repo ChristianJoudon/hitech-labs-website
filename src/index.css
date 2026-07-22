@@ -548,6 +548,14 @@ footer {
     box-shadow: 0 12px 26px rgba(42, 56, 50, 0.07);
   }
 
+  .form-honeypot {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
   .section-divider {
     height: 1px;
     width: 100%;

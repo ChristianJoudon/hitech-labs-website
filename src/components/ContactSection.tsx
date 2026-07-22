@@ -61,6 +61,28 @@ export default function ContactSection() {
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-4">
+              <input
+                type="hidden"
+                name="_subject"
+                value="New website message from hitechlabskauai.com"
+              />
+              <input
+                type="hidden"
+                name="request_type"
+                value="General website message"
+              />
+
+              <div className="form-honeypot" aria-hidden="true">
+                <label htmlFor="contact-company-website">Company website</label>
+                <input
+                  id="contact-company-website"
+                  type="text"
+                  name="_gotcha"
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+              </div>
+
               <motion.div whileHover={{ y: -2 }} className="field-shell">
                 <UserIcon
                   className="size-5 shrink-0 text-clay"
