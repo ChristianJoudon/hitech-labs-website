@@ -78,15 +78,23 @@ function buildAvailability_(service) {
   );
   var todayKey = Utilities.formatDate(now, HITECH_TIME_ZONE, 'yyyy-MM-dd');
   var todayNoon = parseHawaiiIso_(todayKey + 'T12:00:00');
+  var rangeStart = parseHawaiiIso_(todayKey + 'T00:00:00');
+  var rangeEndNoon = new Date(
+    todayNoon.getTime() + HITECH_DAYS_FORWARD * 24 * 60 * 60 * 1000
+  );
+  var rangeEndKey = Utilities.formatDate(
+    rangeEndNoon,
+    HITECH_TIME_ZONE,
+    'yyyy-MM-dd'
+  );
+  var rangeEnd = parseHawaiiIso_(rangeEndKey + 'T23:59:59');
+  var events = calendar.getEvents(rangeStart, rangeEnd);
 
   for (var dayOffset = 0; dayOffset < HITECH_DAYS_FORWARD; dayOffset += 1) {
     var dayNoon = new Date(todayNoon.getTime() + dayOffset * 24 * 60 * 60 * 1000);
     var dateKey = Utilities.formatDate(dayNoon, HITECH_TIME_ZONE, 'yyyy-MM-dd');
     if (hawaiiDayOfWeek_(dateKey) === 0) continue;
 
-    var dayStart = parseHawaiiIso_(dateKey + 'T00:00:00');
-    var dayEnd = parseHawaiiIso_(dateKey + 'T23:59:59');
-    var events = calendar.getEvents(dayStart, dayEnd);
     var slots = [];
 
     for (
