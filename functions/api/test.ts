@@ -7,6 +7,19 @@ const environment = {
   GOOGLE_CALENDAR_BACKEND_SECRET: 'test-secret'
 }
 
+const correctedWeeklyWindows = [
+  {
+    weekdays: [1, 2, 3, 4, 5],
+    openMinute: 1020,
+    closeMinute: 1200
+  },
+  {
+    weekdays: [0, 6],
+    openMinute: 540,
+    closeMinute: 1020
+  }
+]
+
 afterEach(() => {
   vi.restoreAllMocks()
 })
@@ -102,7 +115,7 @@ describe('calendar availability function', () => {
     ])
   })
 
-  it('keeps the rolling year on weekdays and ends at offset 364', async () => {
+  it('uses evening weekday hours and daytime weekend hours for the rolling year', async () => {
     vi.spyOn(globalThis, 'fetch').mockResolvedValue(
       new Response(
         JSON.stringify({
@@ -110,12 +123,10 @@ describe('calendar availability function', () => {
           availabilitySchedule: {
             todayKey: '2026-07-22',
             daysForward: 365,
-            openMinute: 540,
-            closeMinute: 1020,
+            weeklyWindows: correctedWeeklyWindows,
             slotStepMinutes: 30,
             durationMinutes: 30,
             earliestStartMs: Date.parse('2026-07-22T08:00:00-10:00'),
-            weekdays: [1, 2, 3, 4, 5],
             busy: []
           }
         })
@@ -131,15 +142,134 @@ describe('calendar availability function', () => {
 
     expect(response.status).toBe(200)
     const body = await response.json()
-    expect(body.availability).toHaveLength(261)
+    expect(body.availability).toHaveLength(365)
     expect(body.availability[0].date).toBe('2026-07-22')
     expect(body.availability.at(-1).date).toBe('2027-07-21')
-    expect(
-      body.availability.every((day) => {
-        const weekday = new Date(`${day.date}T12:00:00Z`).getUTCDay()
-        return weekday >= 1 && weekday <= 5
-      })
-    ).toBe(true)
+    expect(body.availability[0].slots).toHaveLength(6)
+    expect(body.availability[0].slots[0].timeLabel).toBe('5:00 PM')
+    expect(body.availability[0].slots.at(-1).timeLabel).toBe('7:30 PM')
+
+    const saturday = body.availability.find((day) => day.date === '2026-07-25')
+    expect(saturday.slots).toHaveLength(16)
+    expect(saturday.slots[0].timeLabel).toBe('9:00 AM')
+    expect(saturday.slots.at(-1).timeLabel).toBe('4:30 PM')
+
+    const sunday = body.availability.find((day) => day.date === '2026-07-26')
+    expect(sunday.slots).toHaveLength(16)
+    expect(sunday.slots[0].timeLabel).toBe('9:00 AM')
+    expect(sunday.slots.at(-1).timeLabel).toBe('4:30 PM')
+  })
+
+  it('honors evening lead time and busy-event boundaries', async () => {
+    vi.spyOn(globalThis, 'fetch').mockResolvedValue(
+      new Response(
+        JSON.stringify({
+          ok: true,
+          availabilitySchedule: {
+            todayKey: '2026-07-24',
+            daysForward: 4,
+            weeklyWindows: correctedWeeklyWindows,
+            slotStepMinutes: 30,
+            durationMinutes: 30,
+            earliestStartMs: Date.parse('2026-07-24T17:15:00-10:00'),
+            busy: [
+              [
+                Date.parse('2026-07-24T17:30:00-10:00'),
+                Date.parse('2026-07-24T18:00:00-10:00')
+              ]
+            ]
+          }
+        })
+      )
+    )
+
+    const response = await onRequestGet({
+      env: environment,
+      request: new Request(
+        'https://www.hitechlabskauai.com/api/calendar-availability?serviceId=tech-check'
+      )
+    })
+
+    expect(response.status).toBe(200)
+    const body = await response.json()
+    expect(body.availability.map((day) => day.date)).toEqual([
+      '2026-07-24',
+      '2026-07-25',
+      '2026-07-26',
+      '2026-07-27'
+    ])
+    expect(body.availability[0].slots[0]).toMatchObject({
+      timeLabel: '5:30 PM',
+      available: false,
+      label: 'Booked'
+    })
+    expect(body.availability[0].slots[1]).toMatchObject({
+      timeLabel: '6:00 PM',
+      available: true
+    })
+  })
+
+  it('uses the correct last start for longer services', async () => {
+    vi.spyOn(globalThis, 'fetch').mockResolvedValue(
+      new Response(
+        JSON.stringify({
+          ok: true,
+          availabilitySchedule: {
+            todayKey: '2026-07-24',
+            daysForward: 3,
+            weeklyWindows: correctedWeeklyWindows,
+            slotStepMinutes: 30,
+            durationMinutes: 45,
+            earliestStartMs: Date.parse('2026-07-24T08:00:00-10:00'),
+            busy: []
+          }
+        })
+      )
+    )
+
+    const response = await onRequestGet({
+      env: environment,
+      request: new Request(
+        'https://www.hitechlabskauai.com/api/calendar-availability?serviceId=website-seo'
+      )
+    })
+
+    expect(response.status).toBe(200)
+    const body = await response.json()
+    expect(body.availability[0].slots.at(-1).timeLabel).toBe('7:00 PM')
+    expect(body.availability[1].slots.at(-1).timeLabel).toBe('4:00 PM')
+    expect(body.availability[2].slots.at(-1).timeLabel).toBe('4:00 PM')
+  })
+
+  it('fails closed when weekly windows assign the same day twice', async () => {
+    vi.spyOn(globalThis, 'fetch').mockResolvedValue(
+      new Response(
+        JSON.stringify({
+          ok: true,
+          availabilitySchedule: {
+            todayKey: '2026-07-24',
+            daysForward: 3,
+            weeklyWindows: [
+              correctedWeeklyWindows[0],
+              { weekdays: [5, 6], openMinute: 540, closeMinute: 1020 }
+            ],
+            slotStepMinutes: 30,
+            durationMinutes: 30,
+            earliestStartMs: Date.parse('2026-07-24T08:00:00-10:00'),
+            busy: []
+          }
+        })
+      )
+    )
+
+    const response = await onRequestGet({
+      env: environment,
+      request: new Request(
+        'https://www.hitechlabskauai.com/api/calendar-availability?serviceId=tech-check'
+      )
+    })
+
+    expect(response.status).toBe(503)
   })
 
   it('fails closed when the calendar backend sends a malformed busy interval', async () => {

@@ -58,6 +58,59 @@ function validBusyInterval(interval) {
   )
 }
 
+function validWeeklyWindow(window) {
+  return (
+    window &&
+    typeof window === 'object' &&
+    Array.isArray(window.weekdays) &&
+    window.weekdays.length > 0 &&
+    new Set(window.weekdays).size === window.weekdays.length &&
+    window.weekdays.every(
+      (weekday) => Number.isInteger(weekday) && weekday >= 0 && weekday <= 6
+    ) &&
+    Number.isInteger(window.openMinute) &&
+    window.openMinute >= 0 &&
+    Number.isInteger(window.closeMinute) &&
+    window.closeMinute <= 24 * 60 &&
+    window.closeMinute > window.openMinute
+  )
+}
+
+function windowsByWeekday(schedule) {
+  const weeklyWindows =
+    schedule.weeklyWindows === undefined
+      ? [
+          {
+            weekdays: schedule.weekdays,
+            openMinute: schedule.openMinute,
+            closeMinute: schedule.closeMinute
+          }
+        ]
+      : schedule.weeklyWindows
+
+  if (
+    !Array.isArray(weeklyWindows) ||
+    weeklyWindows.length < 1 ||
+    weeklyWindows.length > 7 ||
+    !weeklyWindows.every(validWeeklyWindow)
+  ) {
+    return null
+  }
+
+  const result = new Map()
+  for (const window of weeklyWindows) {
+    for (const weekday of window.weekdays) {
+      if (result.has(weekday)) return null
+      result.set(weekday, {
+        openMinute: window.openMinute,
+        closeMinute: window.closeMinute
+      })
+    }
+  }
+
+  return result
+}
+
 export function expandAvailabilitySchedule(schedule, serviceId) {
   const expectedDuration = SERVICE_DURATIONS[serviceId]
   if (!schedule || typeof schedule !== 'object' || !expectedDuration) {
@@ -67,33 +120,26 @@ export function expandAvailabilitySchedule(schedule, serviceId) {
   const {
     todayKey,
     daysForward,
-    openMinute,
-    closeMinute,
     slotStepMinutes,
     durationMinutes,
     earliestStartMs,
-    weekdays,
     busy
   } = schedule
+  const scheduleWindows = windowsByWeekday(schedule)
 
   if (
     !validDateKey(todayKey) ||
     !Number.isInteger(daysForward) ||
     daysForward < 1 ||
     daysForward > 366 ||
-    !Number.isInteger(openMinute) ||
-    openMinute < 0 ||
-    !Number.isInteger(closeMinute) ||
-    closeMinute > 24 * 60 ||
-    closeMinute <= openMinute ||
+    !scheduleWindows ||
     !Number.isInteger(slotStepMinutes) ||
     slotStepMinutes < 1 ||
     !Number.isInteger(durationMinutes) ||
     durationMinutes !== expectedDuration ||
     !Number.isFinite(earliestStartMs) ||
-    !Array.isArray(weekdays) ||
-    !weekdays.every(
-      (weekday) => Number.isInteger(weekday) && weekday >= 0 && weekday <= 6
+    ![...scheduleWindows.values()].every(
+      (window) => window.closeMinute - window.openMinute >= durationMinutes
     ) ||
     !Array.isArray(busy) ||
     !busy.every(validBusyInterval)
@@ -101,17 +147,17 @@ export function expandAvailabilitySchedule(schedule, serviceId) {
     throw new Error('The calendar backend returned an invalid schedule.')
   }
 
-  const openWeekdays = new Set(weekdays)
   const availability = []
 
   for (let offset = 0; offset < daysForward; offset += 1) {
     const date = dateKeyAtOffset(todayKey, offset)
-    if (!openWeekdays.has(dayOfWeek(date))) continue
+    const window = scheduleWindows.get(dayOfWeek(date))
+    if (!window) continue
 
     const slots = []
     for (
-      let minuteOfDay = openMinute;
-      minuteOfDay + durationMinutes <= closeMinute;
+      let minuteOfDay = window.openMinute;
+      minuteOfDay + durationMinutes <= window.closeMinute;
       minuteOfDay += slotStepMinutes
     ) {
       const startsAt = hawaiiDate(date, minuteOfDay)

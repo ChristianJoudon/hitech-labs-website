@@ -18,7 +18,8 @@ to this repository or to a public Vite environment variable.
 ## Booking behavior
 
 - Uses the account's primary Google Calendar.
-- Offers Monday through Friday from 9:00 AM to 5:00 PM Hawaii time.
+- Offers Monday through Friday from 5:00 PM to 8:00 PM Hawaii time.
+- Offers Saturday and Sunday from 9:00 AM to 5:00 PM Hawaii time.
 - Keeps a rolling one-year booking window available without adding blocker
   events to the calendar.
 - Requires two hours of lead time.

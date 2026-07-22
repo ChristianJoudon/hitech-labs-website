@@ -1,9 +1,23 @@
 var HITECH_TIME_ZONE = 'Pacific/Honolulu'
-var HITECH_OPEN_MINUTE = 9 * 60
-var HITECH_CLOSE_MINUTE = 17 * 60
+var HITECH_WEEKDAY_OPEN_MINUTE = 17 * 60
+var HITECH_WEEKDAY_CLOSE_MINUTE = 20 * 60
+var HITECH_WEEKEND_OPEN_MINUTE = 9 * 60
+var HITECH_WEEKEND_CLOSE_MINUTE = 17 * 60
 var HITECH_SLOT_STEP_MINUTES = 30
 var HITECH_DAYS_FORWARD = 365
 var HITECH_MINIMUM_LEAD_MINUTES = 120
+var HITECH_WEEKLY_WINDOWS = [
+  {
+    weekdays: [1, 2, 3, 4, 5],
+    openMinute: HITECH_WEEKDAY_OPEN_MINUTE,
+    closeMinute: HITECH_WEEKDAY_CLOSE_MINUTE
+  },
+  {
+    weekdays: [0, 6],
+    openMinute: HITECH_WEEKEND_OPEN_MINUTE,
+    closeMinute: HITECH_WEEKEND_CLOSE_MINUTE
+  }
+]
 
 var HITECH_SERVICES = {
   'tech-check': {
@@ -102,13 +116,13 @@ function buildAvailability_(service) {
       todayNoon.getTime() + dayOffset * 24 * 60 * 60 * 1000
     )
     var dateKey = Utilities.formatDate(dayNoon, HITECH_TIME_ZONE, 'yyyy-MM-dd')
-    if (!isHawaiiWeekday_(dateKey)) continue
+    var availabilityWindow = availabilityWindowForDate_(dateKey)
 
     var slots = []
 
     for (
-      var minute = HITECH_OPEN_MINUTE;
-      minute + service.durationMinutes <= HITECH_CLOSE_MINUTE;
+      var minute = availabilityWindow.openMinute;
+      minute + service.durationMinutes <= availabilityWindow.closeMinute;
       minute += HITECH_SLOT_STEP_MINUTES
     ) {
       var start = parseHawaiiMinute_(dateKey, minute)
@@ -157,12 +171,10 @@ function buildAvailabilitySchedule_(service) {
   return {
     todayKey: todayKey,
     daysForward: HITECH_DAYS_FORWARD,
-    openMinute: HITECH_OPEN_MINUTE,
-    closeMinute: HITECH_CLOSE_MINUTE,
+    weeklyWindows: HITECH_WEEKLY_WINDOWS,
     slotStepMinutes: HITECH_SLOT_STEP_MINUTES,
     durationMinutes: service.durationMinutes,
     earliestStartMs: now.getTime() + HITECH_MINIMUM_LEAD_MINUTES * 60 * 1000,
-    weekdays: [1, 2, 3, 4, 5],
     busy: events.map(function (calendarEvent) {
       return [
         calendarEvent.getStartTime().getTime(),
@@ -300,16 +312,17 @@ function validateBookingWindow_(start, end) {
   var endMinute =
     Number(Utilities.formatDate(end, HITECH_TIME_ZONE, 'H')) * 60 +
     Number(Utilities.formatDate(end, HITECH_TIME_ZONE, 'm'))
+  var availabilityWindow = availabilityWindowForDate_(dateKey)
 
   if (
     start.getTime() < earliest.getTime() ||
     start.getTime() >= bookingWindowEnd.getTime() ||
     end.getTime() <= start.getTime() ||
     endDateKey !== dateKey ||
-    !isHawaiiWeekday_(dateKey) ||
-    startMinute < HITECH_OPEN_MINUTE ||
-    endMinute > HITECH_CLOSE_MINUTE ||
-    startMinute % HITECH_SLOT_STEP_MINUTES !== 0
+    startMinute < availabilityWindow.openMinute ||
+    endMinute > availabilityWindow.closeMinute ||
+    (startMinute - availabilityWindow.openMinute) % HITECH_SLOT_STEP_MINUTES !==
+      0
   ) {
     throw publicError_(
       'That appointment time is outside the booking window.',
@@ -396,9 +409,16 @@ function hawaiiDayOfWeek_(dateKey) {
   return parseHawaiiIso_(dateKey + 'T12:00:00').getUTCDay()
 }
 
-function isHawaiiWeekday_(dateKey) {
+function availabilityWindowForDate_(dateKey) {
   var dayOfWeek = hawaiiDayOfWeek_(dateKey)
-  return dayOfWeek >= 1 && dayOfWeek <= 5
+
+  for (var index = 0; index < HITECH_WEEKLY_WINDOWS.length; index += 1) {
+    if (HITECH_WEEKLY_WINDOWS[index].weekdays.indexOf(dayOfWeek) !== -1) {
+      return HITECH_WEEKLY_WINDOWS[index]
+    }
+  }
+
+  throw new Error('No availability window is configured for this day.')
 }
 
 function eventsOverlap_(start, end, calendarEvent) {
