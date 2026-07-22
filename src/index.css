@@ -1,28 +1,31 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* ==================================================
-   HiTech Labs - design tokens
+   HiTech Labs — design tokens
    Warm cream paper, deep sage-forest greens, and a
    single earthy terracotta accent used sparingly.
 ================================================== */
 
 :root {
   --paper: #f6f2ec;
-  --card: #f9f6f0;
+  --card: #ffffff;
   --mist: #efeae1;
   --linen: #e8e1d6;
   --fern-watermark: #d8d1cb;
   --border-soft: #e5ded2;
-  --sage-muted: #626860;
+  --sage-muted: #6e7269;
   --ink-green: #44534a;
   --ink-green-deep: #33403a;
   --forest: #2a3832;
   --body-text: #585f58;
   --clay: #b56a4c;
   --clay-deep: #a15c41;
+  /* Phosphor-terminal green — used sparingly for prompts, cursor, terminal glyphs */
+  --terminal: #2f855a;
+  --terminal-deep: #256b48;
 }
 
 html {
@@ -35,7 +38,7 @@ body {
   margin: 0;
   background-color: var(--paper);
   color: var(--body-text);
-  font-family: 'Manrope', Inter, Arial, sans-serif;
+  font-family: 'IBM Plex Mono', 'SFMono-Regular', monospace;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -97,7 +100,7 @@ body {
   }
 }
 
-/* Skip-to-content link - visible only on keyboard focus */
+/* Skip-to-content link — visible only on keyboard focus */
 .skip-link {
   position: absolute;
   left: 1rem;
@@ -125,7 +128,6 @@ body {
 #services,
 #advanced,
 #faq,
-#book,
 #contact,
 footer {
   background-color: var(--paper);
@@ -135,7 +137,7 @@ footer {
   isolation: isolate;
 }
 
-/* Paper texture - limited to the hero so the rest of the page stays clean */
+/* Paper texture — limited to the hero so the rest of the page stays clean */
 #home::before {
   content: '';
   position: absolute;
@@ -148,8 +150,21 @@ footer {
   opacity: 0.42;
 }
 
+/* Faint CRT scanlines over the hero — the "terminal" whisper */
 #home::after {
-  content: none;
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(42, 56, 50, 0.05) 0px,
+    rgba(42, 56, 50, 0.05) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+  opacity: 0.6;
 }
 
 @layer components {
@@ -170,61 +185,6 @@ footer {
     max-width: 74rem;
     margin-inline: auto;
     padding-inline: 1.5rem;
-  }
-
-  .form-field {
-    display: flex;
-    flex-direction: column;
-    gap: 0.55rem;
-  }
-
-  .form-label {
-    color: var(--ink-green-deep);
-    font-size: 0.82rem;
-    font-weight: 600;
-    line-height: 1.4;
-  }
-
-  .form-control {
-    width: 100%;
-    min-height: 3rem;
-    border: 1px solid var(--border-soft);
-    border-radius: 16px;
-    background: #fff;
-    padding: 0.78rem 0.95rem;
-    color: var(--ink-green-deep);
-    font: inherit;
-    font-size: 0.94rem;
-    line-height: 1.5;
-    transition:
-      border-color 180ms ease,
-      box-shadow 180ms ease;
-  }
-
-  .form-control::placeholder {
-    color: var(--sage-muted);
-  }
-
-  .form-control:focus {
-    border-color: var(--ink-green);
-    box-shadow: 0 0 0 3px rgba(68, 83, 74, 0.12);
-    outline: none;
-  }
-
-  .form-honeypot {
-    position: absolute;
-    left: -10000px;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-  }
-
-  .text-link {
-    color: var(--ink-green-deep);
-    font-weight: 600;
-    text-decoration: underline;
-    text-decoration-color: rgba(181, 106, 76, 0.55);
-    text-underline-offset: 4px;
   }
 
   @media (min-width: 640px) {
@@ -316,12 +276,12 @@ footer {
   .service-card-title {
     margin-top: 1rem;
     margin-inline: auto;
-    max-width: 15ch;
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(1.7rem, 1.9vw, 2.15rem);
-    line-height: 1.02;
-    letter-spacing: -0.025em;
-    font-weight: 600;
+    max-width: 16ch;
+    font-family: 'Space Mono', 'IBM Plex Mono', monospace;
+    font-size: clamp(1.15rem, 1.5vw, 1.5rem);
+    line-height: 1.18;
+    letter-spacing: -0.04em;
+    font-weight: 700;
     color: var(--ink-green);
     text-wrap: balance;
     transition: color 320ms ease;
@@ -349,6 +309,12 @@ footer {
     transition:
       opacity 380ms ease,
       transform 380ms cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  .service-card-more::before {
+    content: '>';
+    color: var(--terminal);
+    font-weight: 700;
   }
 
   .service-card:hover .service-card-more,
@@ -396,7 +362,7 @@ footer {
     overflow: hidden;
   }
 
-  /* Solid green - the primary action, matches the monogram */
+  /* Solid green — the primary action, matches the monogram */
   .btn-pill-solid {
     border: 1px solid var(--ink-green-deep);
     background-color: var(--ink-green-deep);
@@ -411,7 +377,7 @@ footer {
     box-shadow: 0 20px 42px rgba(42, 56, 50, 0.22);
   }
 
-  /* Outline - secondary action on paper */
+  /* Outline — secondary action on paper */
   .btn-pill {
     border: 1px solid rgba(68, 83, 74, 0.28);
     background-color: transparent;
@@ -466,30 +432,30 @@ footer {
   -------------------- */
 
   .display-title {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(3.2rem, 7.2vw, 6.1rem);
-    line-height: 0.94;
-    letter-spacing: -0.045em;
-    font-weight: 600;
+    font-family: 'Space Mono', 'IBM Plex Mono', monospace;
+    font-size: clamp(2.3rem, 5.2vw, 3.75rem);
+    line-height: 1.05;
+    letter-spacing: -0.05em;
+    font-weight: 700;
     color: var(--ink-green-deep);
   }
 
   .sub-title {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(2.6rem, 4.8vw, 4rem);
-    line-height: 0.98;
-    letter-spacing: -0.035em;
-    font-weight: 600;
+    font-family: 'Space Mono', 'IBM Plex Mono', monospace;
+    font-size: clamp(1.45rem, 2.7vw, 2.05rem);
+    line-height: 1.12;
+    letter-spacing: -0.045em;
+    font-weight: 700;
     color: var(--ink-green-deep);
   }
 
   .service-modal-title,
   .accordion-title,
   .faq-title {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    line-height: 1;
-    letter-spacing: -0.03em;
-    font-weight: 600;
+    font-family: 'Space Mono', 'IBM Plex Mono', monospace;
+    line-height: 1.12;
+    letter-spacing: -0.04em;
+    font-weight: 700;
     color: var(--ink-green-deep);
     text-wrap: balance;
   }
@@ -500,25 +466,32 @@ footer {
     color: var(--body-text);
   }
 
+  /* Terminal-prompt eyebrow: green > prefix, clay label, blinking cursor */
   .eyebrow {
     display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
+    align-items: baseline;
+    gap: 0.45rem;
     font-family: 'IBM Plex Mono', 'SFMono-Regular', monospace;
     font-size: 0.76rem;
     font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.24em;
+    letter-spacing: 0.2em;
     color: var(--clay-deep);
   }
 
-  .eyebrow-line::before {
-    content: '';
-    display: inline-block;
-    width: 1.75rem;
-    height: 1px;
-    background-color: currentColor;
-    opacity: 0.55;
+  .eyebrow::before {
+    content: '>';
+    color: var(--terminal);
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+
+  .eyebrow::after {
+    content: '_';
+    margin-left: -0.15rem;
+    color: var(--terminal);
+    letter-spacing: 0;
+    animation: cursor-blink 1.1s steps(1, end) infinite;
   }
 
   .mono-detail {
@@ -545,11 +518,11 @@ footer {
   }
 
   .trust-dot {
-    width: 4px;
-    height: 4px;
-    border-radius: 999px;
-    background-color: var(--clay);
-    opacity: 0.7;
+    width: 5px;
+    height: 5px;
+    border-radius: 1px;
+    background-color: var(--terminal);
+    opacity: 0.8;
   }
 
   /* --------------------
@@ -611,6 +584,23 @@ footer {
   animation: fern-drift 13s ease-in-out infinite;
 }
 
+/* Terminal cursor blink */
+@keyframes cursor-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.cursor {
+  color: var(--terminal);
+  animation: cursor-blink 1.1s steps(1, end) infinite;
+}
+
 /* ==================================================
    Booking widget (Chime embed) host container
    The widget itself is fully self-scoped under
@@ -642,4 +632,18 @@ footer {
   color: var(--ink-green-deep);
   text-decoration: underline;
   text-underline-offset: 3px;
+}
+
+/* ==================================================
+   Card surfaces for Core Services, Advanced Solutions,
+   and FAQ — use the trust-strip tone (#FAF7F2, the band
+   under the hero) instead of the default white card.
+   Scoped by section so the contact/pricing/booking
+   panels keep their own surface.
+================================================== */
+#services .service-card,
+#services .panel-glass,
+#advanced .panel-glass,
+#faq .panel-glass {
+  background-color: #faf7f2;
 }

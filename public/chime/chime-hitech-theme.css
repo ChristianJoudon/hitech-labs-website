@@ -5,34 +5,32 @@
    points without changing behavior. All selectors stay under
    `.chime-widget`, so nothing here can leak onto the host page.
    Palette + type sampled from the HiTech Labs site (warm paper, sage-forest
-   greens, terracotta clay, Manrope, and Cormorant Garamond).
+   greens, terracotta clay, IBM Plex Mono / Space Mono).
    ========================================================================== */
 
 /* The widget's own design tokens are now recolored to the HiTech palette at the
    source (chime-widget.css), so this theme only sets the warm backdrop + fonts
    and a few embed-specific tweaks. */
 .chime-widget {
-  background: linear-gradient(180deg, #f7f3ed 0%, #faf7f1 60%, #fbf9f4 100%);
+  /* Warm paper backdrop with a faint phosphor-green glow, instead of mint. */
+  background:
+    radial-gradient(circle at 12% -8%, rgba(47, 133, 90, 0.08), transparent 42%),
+    linear-gradient(180deg, #f7f3ed 0%, #faf7f1 60%, #fbf9f4 100%);
 
-  font-family: 'Manrope', Inter, Arial, sans-serif;
+  font-family: 'IBM Plex Mono', 'SFMono-Regular', ui-monospace, 'SF Mono', monospace;
 }
 
-/* Display headings follow the site's refined editorial type. */
+/* Display headings in Space Mono to echo the site's terminal wordmark. */
 .chime-widget h2,
-.chime-widget h3 {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  letter-spacing: -0.02em;
-  font-weight: 600;
-}
-
+.chime-widget h3,
 .chime-widget .chime-progress__label {
-  font-family: 'Manrope', Inter, Arial, sans-serif;
-  font-weight: 600;
+  font-family: 'Space Mono', 'IBM Plex Mono', monospace;
+  letter-spacing: -0.02em;
 }
 
 /* The widget renders its own "Appointment Concierge / HiTech Labs" bar. On the
    site the section already has a heading, and a sticky bar would collide with
-   the fixed HiTech navbar - so hide it and let the flow start at the steps. */
+   the fixed HiTech navbar — so hide it and let the flow start at the steps. */
 .chime-widget .chime-header {
   display: none;
 }
@@ -44,7 +42,7 @@
 .chime-widget .chime-orb--one,
 .chime-widget .chime-orb--two,
 .chime-widget .chime-orb--three {
-  background: rgba(68, 83, 74, 0.35);
+  background: rgba(47, 133, 90, 0.5);
 }
 
 /* Tighten the widget's page-scale padding for embedded use inside a card. */
@@ -119,7 +117,7 @@
   }
 }
 
-/* Terracotta clay accent, used as sparingly as the host does - the "today" dot
+/* Terracotta clay accent, used as sparingly as the host does — the "today" dot
    and the required-field marker pick it up so it doesn't read as all-green. */
 .chime-widget .calendar-day[data-today='true'] .calendar-day__number::after {
   background: #b56a4c;
@@ -133,7 +131,7 @@
    ========================================================================== */
 
 /* The per-step heading ("Choose your appointment type") rendered larger than
-   the site's own section titles - bring it in line. */
+   the site's own section titles — bring it in line. */
 .chime-widget h2 {
   font-size: clamp(1.35rem, 3vw, 1.8rem);
   line-height: 1.16;
@@ -153,12 +151,13 @@
 }
 
 /* The mint chips (deposit pill, calendar strip, summaries) were a bright, cool
-   mint that clashed with the warm paper palette. Retint to the site's sage. */
+   mint that clashed with the warm paper palette. Retint to the site's soft
+   terminal-green accent. */
 .chime-widget .service-card__pill,
 .chime-widget .calendar-stat-strip,
 .chime-widget .selection-summary,
 .chime-widget .terms-acceptance[data-unlocked='true'] {
-  background: rgba(68, 83, 74, 0.08);
-  border-color: rgba(68, 83, 74, 0.2);
-  color: #44534a;
+  background: rgba(47, 133, 90, 0.1);
+  border-color: rgba(47, 133, 90, 0.24);
+  color: #2f6b4a;
 }

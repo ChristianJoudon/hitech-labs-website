@@ -60,7 +60,7 @@ export default function FAQSection() {
     >
       <div className="container-shell">
         <div className="mx-auto max-w-2xl text-center">
-          <span className="eyebrow eyebrow-line">Good to know</span>
+          <span className="eyebrow">Good to know</span>
           <h2 className="sub-title mt-5">Frequently Asked Questions</h2>
           <p className="body-copy mt-4">
             A few quick answers to the most common questions small-business
@@ -79,10 +79,10 @@ export default function FAQSection() {
                 >
                   <Disclosure.Button className="flex w-full items-center justify-between gap-4 p-5 text-left md:px-7">
                     <div className="flex items-start gap-4">
-                      <div className="mt-1 flex size-10 shrink-0 items-center justify-center text-clay">
+                      <div className="bg-clay/12 mt-1 flex size-10 shrink-0 items-center justify-center rounded-full text-clay">
                         {item.icon}
                       </div>
-                      <h3 className="faq-title text-[1.5rem] leading-[1.05] md:text-[1.9rem]">
+                      <h3 className="font-mono text-[1rem] font-semibold leading-snug tracking-[-0.01em] text-inkdeep md:text-[1.18rem]">
                         {item.q}
                       </h3>
                     </div>
@@ -122,7 +122,7 @@ export default function FAQSection() {
         </div>
 
         <div className="mt-10 text-center">
-          <a href="#book" className="btn-pill">
+          <a href="#contact" className="btn-pill">
             Schedule a Free Consult
           </a>
         </div>

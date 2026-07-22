@@ -4,29 +4,35 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Warm paper / cream sampled from the card and invoice stock
+        // Warm page stock with crisp white card surfaces
         paper: '#F6F2EC',
-        card: '#F9F6F0',
+        card: '#FFFFFF',
         mist: '#EFEAE1',
         linen: '#E8E1D6',
         // Pale sage watermark used for ferns
         fern: '#D4CDC1',
         bordersoft: '#E5DED2',
         // Muted sage-gray for secondary labels
-        sage: '#626860',
-        // Greens - deepened to match the HL monogram + business-card wordmark
+        sage: '#8C9088',
+        // Greens — deepened to match the HL monogram + business-card wordmark
         ink: '#44534A',
         inkdeep: '#33403A',
         forest: '#2A3832',
-        // Body copy - crisper than before
+        // Body copy — crisper than before
         body: '#585F58',
-        // Earthy terracotta - replaces the old dusty coral, used sparingly
+        // Earthy terracotta — replaces the old dusty coral, used sparingly
         clay: '#B56A4C',
-        claydeep: '#A15C41'
+        claydeep: '#A15C41',
+        // Phosphor-terminal green — hacker-chic accent for prompts/cursor
+        terminal: '#2F855A',
+        terminaldeep: '#256B48'
       },
       fontFamily: {
-        heading: ['"Cormorant Garamond"', 'Georgia', 'serif'],
-        body: ['Manrope', 'Inter', 'Arial', 'sans-serif'],
+        // Bold geometric sans for the "HiTech Labs" wordmark/logo
+        wordmark: ['"Archivo Black"', 'system-ui', 'sans-serif'],
+        // Monospace display + body — the terminal direction
+        heading: ['"Space Mono"', '"IBM Plex Mono"', 'monospace'],
+        body: ['"IBM Plex Mono"', '"SFMono-Regular"', 'monospace'],
         mono: ['"IBM Plex Mono"', '"SFMono-Regular"', 'monospace']
       },
       boxShadow: {
